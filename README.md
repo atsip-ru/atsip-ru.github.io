@@ -1,2 +1,2 @@
-# atsip.github.io
+# atsip-ru.github.io
 Website replacement
