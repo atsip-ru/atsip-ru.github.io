@@ -2,8 +2,9 @@
 Перевод статьи [Remote BLF's using PJSIP](https://wiki.freepbx.org/display/FDT/Remote+BLF%27s+using+PJSIP) с вики FreePBX.
 На этой странице будет описано, как настроить BLF удаленного телефона с помощью PJSIP между двумя АТС, которые будут отслеживать состояния устройства удаленных телефонов.
 ### Так же к ознакомлению
-Publishing Extension States
-Exchanging Device State PJSIP
+[Publishing Extension States](https://wiki.asterisk.org/wiki/display/AST/Publishing+Extension+State)
+
+[Exchanging Device State PJSIP](https://wiki.asterisk.org/wiki/display/AST/Exchanging+Device+and+Mailbox+State+Using+PJSIP)
 ## Исходные данные
 ![](images/blf-pjsip-01.png)
 Настройка BLF на телефонах
@@ -14,7 +15,8 @@ BLF Alerts
 ### PBXact
 ![](images/blf-pjsip-03.png)
 **Настройка FreePBX Config**
-    1. Отредактируйте pjsip.endpoint_custom.conf путем добавления следующих данных
+
+1. Отредактируйте pjsip.endpoint_custom.conf путем добавления следующих данных
 ```
 [PBXact]
 type=endpoint
@@ -40,14 +42,14 @@ type=inbound-publication
 event_asterisk-devicestate=PBXact
 event_asterisk-mwi=PBXact
 ```
-**    2. Отредактируйте extensions_custom.conf**
+**2. Отредактируйте extensions_custom.conf**
 ```
 [from-internal-custom]
 exten => _[123]xxx,hint,PJSIP/${EXTEN}&&PJSIP/90${EXTEN}&PJSIP/99${EXTEN}&Custom:DND${EXTEN},CustomPresence:${EXTEN}
 ; *****обратите внимание, что диалплан ищет расширения в диапазоне 1xxx, 2xxx и 3ххх
 ```
 ## Настройка PBXAct
-**    1. Отредактируйте the pjsip.endpoint_custom.conf добавив следующие данные**
+**1. Отредактируйте the pjsip.endpoint_custom.conf добавив следующие данные**
 ```
 [FreePBX]
 type=endpoint
