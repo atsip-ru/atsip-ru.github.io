@@ -16,7 +16,8 @@ BLF Alerts
 ![](images/blf-pjsip-03.png)
 **Настройка FreePBX Config**
 
-1. Отредактируйте pjsip.endpoint_custom.conf путем добавления следующих данных
+**1. Отредактируйте pjsip.endpoint_custom.conf путем добавления следующих данных**
+
 ```
 [PBXact]
 type=endpoint
@@ -42,14 +43,19 @@ type=inbound-publication
 event_asterisk-devicestate=PBXact
 event_asterisk-mwi=PBXact
 ```
+
 **2. Отредактируйте extensions_custom.conf**
+
 ```
 [from-internal-custom]
 exten => _[123]xxx,hint,PJSIP/${EXTEN}&&PJSIP/90${EXTEN}&PJSIP/99${EXTEN}&Custom:DND${EXTEN},CustomPresence:${EXTEN}
 ; *****обратите внимание, что диалплан ищет расширения в диапазоне 1xxx, 2xxx и 3ххх
 ```
+
 ## Настройка PBXAct
-**1. Отредактируйте the pjsip.endpoint_custom.conf добавив следующие данные**
+
+**1. Отредактируйте pjsip.endpoint_custom.conf добавив следующие данные**
+
 ```
 [FreePBX]
 type=endpoint
@@ -75,19 +81,25 @@ type=inbound-publication
 event_asterisk-devicestate=FreePBX
 event_asterisk-mwi=FreePBX
 ```
-**    2. Отредактируйте extensions_custom.conf**
+
+**2. Отредактируйте extensions_custom.conf**
+
 ```
 [from-internal-custom]
 exten => _[123]xxx,hint,PJSIP/${EXTEN}&&PJSIP/90${EXTEN}&PJSIP/99${EXTEN}&Custom:DND${EXTEN},CustomPresence:${EXTEN}
 ; *****обратите внимание, что диалплан ищет расширения в диапазоне 1xxx, 2xxx и 3ххх
 ```
+
 Чтобы показать хинты от каждой АТС соответственно вы можете ввести следующее
-    1. В CLI на FreePBX: `asterisk-rx 'core show hints' | grep-i (ext)`
+1. В CLI на FreePBX: `asterisk-rx 'core show hints' | grep-i (ext)`
 
 ![](images/blf-pjsip-04.png)
 
 Как вы можете видеть, экземпляр FreePBX следит за расширениями 7200 и 4100 на PBXact
 Когда пользователь находится в состоянии вызова - BLF изменится так же, как и хинт
+
 ![](images/blf-pjsip-05.png)
-    2. DND так же можно контролировать
+
+2. DND так же можно контролировать
+
 ![](images/blf-pjsip-06.png)
