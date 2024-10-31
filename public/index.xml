@@ -13,16 +13,19 @@
       <link>http://localhost:1313/posts/specifying-a-specific-direction/</link>
       <pubDate>Thu, 31 Oct 2024 16:00:19 +0500</pubDate>
       <guid>http://localhost:1313/posts/specifying-a-specific-direction/</guid>
-      <description>&lt;h1 id=&#34;задание-определенного-направления-выход-через-конкретный-транк&#34;&gt;Задание определенного направления (выход через конкретный транк)&lt;/h1&gt;
-&lt;p&gt;Для начала создаем нужный нам маршрут: &lt;strong&gt;Подключения → Исходящая маршрутизация&lt;/strong&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;6d792aa70fd0b7d7f644c884205cf8ccpng_resources6d792aa70fd0b7d7f644c884205cf8ccpng&#34;&gt;&lt;img loading=&#34;lazy&#34; src=&#34;./_resources/6d792aa70fd0b7d7f644c884205cf8cc.png&#34; alt=&#34;6d792aa70fd0b7d7f644c884205cf8cc.png&#34;  /&gt;
-&lt;/h3&gt;
+      <description>&lt;p&gt;Для начала создаем нужный нам маршрут: &lt;strong&gt;Подключения → Исходящая маршрутизация&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/6d792aa70fd0b7d7f644c884205cf8cc.png&#34; alt=&#34;6d792aa70fd0b7d7f644c884205cf8cc.png&#34;  /&gt;
+&lt;/p&gt;
 &lt;p&gt;Задаем произвольно описание , необходимый нам CallerID и транк, через который будет передаваться вызов с этим CallerID (если транк с регистрацией и допустим только один CallerID, то можно указать «&lt;strong&gt;Форсировать использование транкового CID (Force Trunk CID) в настройках транка&lt;/strong&gt;»)&lt;/p&gt;
-&lt;h3 id=&#34;bf2ae29dc9e282da384bee12fe2a4e07png_resourcesbf2ae29dc9e282da384bee12fe2a4e07png&#34;&gt;&lt;img loading=&#34;lazy&#34; src=&#34;./_resources/bf2ae29dc9e282da384bee12fe2a4e07.png&#34; alt=&#34;bf2ae29dc9e282da384bee12fe2a4e07.png&#34;  /&gt;
-&lt;/h3&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/bf2ae29dc9e282da384bee12fe2a4e07.png&#34; alt=&#34;bf2ae29dc9e282da384bee12fe2a4e07.png&#34;  /&gt;
+&lt;/p&gt;
 &lt;p&gt;Задаем необходимые (допустимые) нам шаблоны набора номеров:&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;./_resources/0494b10004354ef8df2036731a4db6b8.png&#34; alt=&#34;0494b10004354ef8df2036731a4db6b8.png&#34;  /&gt;
-&lt;/p&gt;</description>
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/0494b10004354ef8df2036731a4db6b8.png&#34; alt=&#34;0494b10004354ef8df2036731a4db6b8.png&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Можете включить запись вызова:&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/68dfc868664b4fe78ecf2c70c1df736e.png&#34; alt=&#34;68dfc868664b4fe78ecf2c70c1df736e.png&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;После этого обязательно &lt;strong&gt;Сохраняем&lt;/strong&gt; и &lt;strong&gt;Применяем изменения.&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
