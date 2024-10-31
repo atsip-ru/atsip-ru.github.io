@@ -1,4 +1,9 @@
 baseURL = 'https://atsip-ru.github.io/'
 languageCode = 'ru'
-title = 'Intelcom Site'
+title = 'Интелком'
 theme = 'PaperMod'
+
+# Navigation
+[params.navigation]
+#other stuff
+logo = "logo.png"
