@@ -2,28 +2,28 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Интелком</title>
-    <link>https://atsip-ru.github.io/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on Интелком</description>
     <generator>Hugo -- 0.134.2</generator>
     <language>ru</language>
     <lastBuildDate>Thu, 31 Oct 2024 16:00:19 +0500</lastBuildDate>
-    <atom:link href="https://atsip-ru.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Задание определенного направления (выход через конкретный транк)</title>
-      <link>https://atsip-ru.github.io/posts/specifying-a-specific-direction/</link>
+      <link>http://localhost:1313/posts/specifying-a-specific-direction/</link>
       <pubDate>Thu, 31 Oct 2024 16:00:19 +0500</pubDate>
-      <guid>https://atsip-ru.github.io/posts/specifying-a-specific-direction/</guid>
+      <guid>http://localhost:1313/posts/specifying-a-specific-direction/</guid>
       <description>&lt;p&gt;Для начала создаем нужный нам маршрут: &lt;strong&gt;Подключения → Исходящая маршрутизация&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://atsip-ru.github.io/6d792aa70fd0b7d7f644c884205cf8cc.png&#34; alt=&#34;6d792aa70fd0b7d7f644c884205cf8cc.png&#34;  /&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/6d792aa70fd0b7d7f644c884205cf8cc.png&#34; alt=&#34;6d792aa70fd0b7d7f644c884205cf8cc.png&#34;  /&gt;
 &lt;/p&gt;
 &lt;p&gt;Задаем произвольно описание , необходимый нам CallerID и транк, через который будет передаваться вызов с этим CallerID (если транк с регистрацией и допустим только один CallerID, то можно указать «&lt;strong&gt;Форсировать использование транкового CID (Force Trunk CID) в настройках транка&lt;/strong&gt;»)&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://atsip-ru.github.io/bf2ae29dc9e282da384bee12fe2a4e07.png&#34; alt=&#34;bf2ae29dc9e282da384bee12fe2a4e07.png&#34;  /&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/bf2ae29dc9e282da384bee12fe2a4e07.png&#34; alt=&#34;bf2ae29dc9e282da384bee12fe2a4e07.png&#34;  /&gt;
 &lt;/p&gt;
 &lt;p&gt;Задаем необходимые (допустимые) нам шаблоны набора номеров:&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://atsip-ru.github.io/0494b10004354ef8df2036731a4db6b8.png&#34; alt=&#34;0494b10004354ef8df2036731a4db6b8.png&#34;  /&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/0494b10004354ef8df2036731a4db6b8.png&#34; alt=&#34;0494b10004354ef8df2036731a4db6b8.png&#34;  /&gt;
 &lt;/p&gt;
 &lt;p&gt;Можете включить запись вызова:&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://atsip-ru.github.io/68dfc868664b4fe78ecf2c70c1df736e.png&#34; alt=&#34;68dfc868664b4fe78ecf2c70c1df736e.png&#34;  /&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/68dfc868664b4fe78ecf2c70c1df736e.png&#34; alt=&#34;68dfc868664b4fe78ecf2c70c1df736e.png&#34;  /&gt;
 &lt;/p&gt;
 &lt;p&gt;После этого обязательно &lt;strong&gt;Сохраняем&lt;/strong&gt; и &lt;strong&gt;Применяем изменения.&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
