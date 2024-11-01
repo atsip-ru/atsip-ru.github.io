@@ -1,7 +1,8 @@
 baseURL = 'https://atsip.net/'
 languageCode = 'ru'
-title = 'AtSip.Net'
-theme = 'mainroad'
+title = 'AtSIP'
+theme = 'PaperMod'
+icon = "logo.png"
 
 [Params.style.vars]
   highlightColor = "#e22d30" # Override highlight color
