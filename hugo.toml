@@ -1,9 +1,40 @@
-baseURL = 'https://atsip-ru.github.io/'
+baseURL = 'https://atsip.net/'
 languageCode = 'ru'
-title = 'Интелком'
-theme = 'PaperMod'
+title = 'AtSip.Net'
+theme = 'mainroad'
 
-# Navigation
-[params.navigation]
-#other stuff
-logo = "logo.png"
+[Params.style.vars]
+  highlightColor = "#e22d30" # Override highlight color
+
+  # Override font-family sets
+  # Take care of different quotes OR escaping symbols in these params if necessary
+  fontFamilyPrimary = "'Open Sans', Helvetica, Arial, sans-serif"
+  # Secondary font-family set responsible for pre, code, kbd, and samp tags font
+  fontFamilySecondary = "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"
+
+[Params.logo]
+  image = "img/logo.png" # Logo image. Path relative to "static"
+  title = "atsip" # Logo title, otherwise will use site title
+  subtitle = "Просто сайт для atsip.ru" # Logo subtitle
+
+[Params.thumbnail]
+  visibility = ["list", "post"] # Control thumbnail visibility
+
+[Params.sidebar]
+  home = "right" # Configure layout for home page
+  list = "left"  # Configure layout for list pages
+  single = false # Configure layout for single pages
+  # Enable widgets in given order
+  widgets = ["search", "recent", "categories", "taglist", "social", "languages"]
+
+[Params.widgets]
+  recent_num = 5 # Set the number of articles in the "Recent articles" widget
+  categories_counter = false # Enable counter for each category in "Categories" widget
+  tags_counter = false # Enable counter for each tag in "Tags" widget
+
+[Params.widgets.social]
+  cached = false # activate cache if true
+  # Enable parts of social widget
+  telegram = "intelcom56"
+  github = "atsip-ru"
+  email = "atsip76@gmail.com"
