@@ -1,5 +1,0 @@
-baseURL = 'https://atsip.net/'
-languageCode = 'ru'
-title = 'AtSIP'
-theme = 'PaperMod'
-icon = "logo.png"

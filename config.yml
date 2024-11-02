@@ -1,6 +1,6 @@
 baseURL: "https://atsip-ru.github.io/"
 title: "AtSIP"
-paginate: 5
+pagination.pagerSize: 5
 theme: "PaperMod"
 
 enableRobotsTXT: true
@@ -15,20 +15,20 @@ minify:
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: AtSIP
-  description: "ExampleSite description"
-  keywords: [Blog, Portfolio, PaperMod]
+  description: "Atsip Asterisk telephony"
+  keywords: [SIP, Asterisk, IT]
   author: "Dmitriy Q"
   # author: ["Me", "You"] # multiple authors
   images: ["<link or path of image for opengraph, twitter-cards>"]
   DateFormat: "January 2, 2006"
-  defaultTheme: auto # dark, light
-  disableThemeToggle: false
+  defaultTheme: light # dark, light
+  disableThemeToggle: true
 
   ShowReadingTime: true
-  ShowShareButtons: true
+  ShowShareButtons: false
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
-  ShowCodeCopyButtons: false
+  ShowCodeCopyButtons: true
   ShowWordCount: true
   ShowRssButtonInSectionTermList: true
   UseHugoToc: true
@@ -57,8 +57,8 @@ params:
   # profile-mode
   profileMode:
     enabled: false # needs to be explicitly set
-    title: ExampleSite
-    subtitle: "This is subtitle"
+    title: AtSIP
+    subtitle: "IP-telephony Asterisk-based"
     imageUrl: "<img location>"
     imageWidth: 120
     imageHeight: 120
@@ -94,8 +94,8 @@ params:
     hiddenInSingle: true # hide on single page
 
   editPost:
-    URL: "https://github.com/<path_to_repo>/content"
-    Text: "Suggest Changes" # edit text
+    URL: "https://github.com/atsip-ru.github.io/content"
+    Text: "Внесите изменения" # edit text
     appendFilePath: true # to append file path to Edit link
 
   # for search
@@ -111,18 +111,22 @@ params:
     keys: ["title", "permalink", "summary", "content"]
 menu:
   main:
-    - identifier: categories
-      name: categories
-      url: /categories/
+    - identifier: Статьи
+      name: Статьи
+      url: /articles/
       weight: 10
-    - identifier: tags
-      name: tags
-      url: /tags/
+    - identifier: instructions
+      name: Инструкции
+      url: /instructions/
       weight: 20
+    - identifier: about
+      name: О нас
+      url: /about/
+      weight: 30
     - identifier: example
       name: example.org
       url: https://example.org
-      weight: 30
+      weight: 40
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
 markup:
