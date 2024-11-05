@@ -18,15 +18,17 @@ params:
   title: AtSIP
   description: "Atsip Asterisk telephony"
   keywords: [SIP, Asterisk, IT, Orsk, Orenburg, Орск, Оренбург, IP-Telephony, IP-телефония]
-  author: "Dmitriy Q"
+  author: ["Dmitriy Q", "Anatoliy"]
   # author: ["Me", "You"] # multiple authors
   images: ["<link or path of image for opengraph, twitter-cards>"]
   DateFormat: "January 2, 2006"
+  languageAltTitle: "Russian"
   defaultTheme: light # dark, light
   disableThemeToggle: true
 
   ShowReadingTime: true
   ShowShareButtons: true
+  ShareButtons: ["telegram", "twitter"]
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
@@ -35,6 +37,7 @@ params:
   UseHugoToc: true
   disableSpecial1stPost: false
   disableScrollToTop: false
+#  disableAnchoredHeadings: true
   comments: false
   hidemeta: false
   hideSummary: false
@@ -82,12 +85,12 @@ params:
       url: "https://github.com/atsip-ru"
 
   analytics:
-    google:
-      SiteVerificationTag: "XYZabc"
+#    google:
+#      SiteVerificationTag: "XYZabc"
 #    bing:
 #      SiteVerificationTag: "XYZabc"
     yandex:
-      SiteVerificationTag: "98821141"
+      SiteVerificationTag: "a654f52a611b9bb6"
 
   cover:
     hidden: true # hide everywhere but not in structured data
@@ -95,7 +98,7 @@ params:
     hiddenInSingle: true # hide on single page
 
   editPost:
-    URL: "https://github.com/atsip-ru.github.io/content"
+    URL: "https://github.com/atsip-ru/atsip-ru.github.io/tree/master/content"
     Text: "Внесите изменения" # edit text
     appendFilePath: true # to append file path to Edit link
 

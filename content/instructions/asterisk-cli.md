@@ -1,6 +1,7 @@
 +++
 title = 'Работа с CLI Asterisk'
 date = 2024-11-02T15:10:21+05:00
+author = 'Dmitriy Q'
 draft = false
 +++
 CLI (Command Line Interface) - очень полезный инструмент диагностики и отладки при работе с Asterisk.
