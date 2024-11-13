@@ -21,9 +21,10 @@
       <description>&lt;p&gt;Сегодня разберем как установить модуль без доступа к репозиториям Sangoma или вообще без доступа в интернет.&lt;/p&gt;
 &lt;p&gt;Заходим в модуль FreePBX &lt;strong&gt;Управление модулями&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Admin&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Module Admin.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Вкладка &lt;strong&gt;Module Updates&lt;/strong&gt; и жмём кнопку &lt;strong&gt;Upload Modules&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;../_resources/ed6920f9f60597e1aef493207d3b0643.png&#34; alt=&#34;ed6920f9f60597e1aef493207d3b0643.png&#34;  /&gt;
-Можно выбрать как загрузку из веба, так и с жесткого диска.&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;../_resources/3db0d96a1f5f11e2c928aca71da99805.png&#34; alt=&#34;3db0d96a1f5f11e2c928aca71da99805.png&#34;  /&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/ed6920f9f60597e1aef493207d3b0643.png&#34; alt=&#34;ed6920f9f60597e1aef493207d3b0643.png&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Можно выбрать как загрузку из веба, так и с жесткого диска.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/3db0d96a1f5f11e2c928aca71da99805.png&#34; alt=&#34;3db0d96a1f5f11e2c928aca71da99805.png&#34;  /&gt;
 &lt;/p&gt;
 &lt;h2 id=&#34;загрузка-с-жесткого-диска---2-пункт&#34;&gt;Загрузка (с жесткого диска) - 2 пункт.&lt;/h2&gt;
 &lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;../_resources/8ef15e94ea1154f0a891f6f3707af805.png&#34; alt=&#34;8ef15e94ea1154f0a891f6f3707af805.png&#34;  /&gt;

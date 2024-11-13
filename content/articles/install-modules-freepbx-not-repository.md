@@ -1,7 +1,8 @@
 +++
-title = 'Install Modules Freepbx Not Repository'
+title = 'Установка модулей во FreePBX не из репозитория'
 date = 2024-11-13T16:08:41+05:00
 draft = false
+author = 'Dmitriy Q'
 +++
 Сегодня разберем как установить модуль без доступа к репозиториям Sangoma или вообще без доступа в интернет.
 
