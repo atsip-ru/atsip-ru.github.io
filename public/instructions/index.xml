@@ -11,15 +11,26 @@
     </image>
     <generator>Hugo -- 0.134.2</generator>
     <language>ru</language>
-    <lastBuildDate>Wed, 13 Nov 2024 16:26:51 +0500</lastBuildDate>
+    <lastBuildDate>Wed, 13 Nov 2024 16:47:48 +0500</lastBuildDate>
     <atom:link href="http://localhost:1313/instructions/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Обзор возможностей Asterisk</title>
+      <link>http://localhost:1313/instructions/asterisk-features-overview/</link>
+      <pubDate>Wed, 13 Nov 2024 16:47:48 +0500</pubDate>
+      <guid>http://localhost:1313/instructions/asterisk-features-overview/</guid>
+      <description>&lt;h2 id=&#34;внутренние-номера&#34;&gt;Внутренние номера&lt;/h2&gt;
+&lt;p&gt;Внутренние номера в Asterisk могут быть 3-х, 4-х и более значными, могут быть и двух, но двухзначными принято делать коды функций, хоть они как правило и начинаются с символа *.&lt;/p&gt;
+&lt;p&gt;Каждому номеру возможно задать описание с дополнительной информацией — будь то должность человека или его Фамилия и Имя.&lt;/p&gt;
+&lt;p&gt;Естественно каждому номеру необходим пароль.&lt;/p&gt;
+&lt;p&gt;Так же имеется возможность распределять номерам имеющиеся внешние исходящие номера.&lt;/p&gt;
+&lt;p&gt;Начиная с 13 версии появилась возможность мультирегистрации для внутренних номеров — это значит что под одним внутренним номером может быть зарегистрировано несколько устройств: настольный телефон и софтфон на смартфоне например.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Модуль детализации звонков</title>
-      <link>http://localhost:1313/instructions/calls-dsetailed-modules/</link>
+      <link>http://localhost:1313/instructions/calls-detailed-module/</link>
       <pubDate>Wed, 13 Nov 2024 16:26:51 +0500</pubDate>
-      <guid>http://localhost:1313/instructions/calls-dsetailed-modules/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Модуль детализации звонков&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Выглядит он так:&lt;/p&gt;
+      <guid>http://localhost:1313/instructions/calls-detailed-module/</guid>
+      <description>&lt;p&gt;Выглядит он так:&lt;/p&gt;
 &lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/lu124487hgtwh_tmp_f40dca94.png&#34; alt=&#34;&#34;  /&gt;
 &lt;/p&gt;
 &lt;p&gt;Задается множество фильтров по различным параметрам, без фильтров покажет все вызовы начиная с самых последних:
