@@ -113,7 +113,7 @@ Console verbose was 2 and is now 3.
     -- Executing [out@sub-record-check:6] Return("PJSIP/002-00000031", "") in new stack
     -- Executing [71222@from-internal:3] Set("PJSIP/002-00000031", "ROUTE_CIDSAVE="Support-ATC" <002>") in new stack
     -- Executing [71222@from-internal:4] Set("PJSIP/002-00000031", "_ROUTEID=3") in new stack
-    -- Executing [71222@from-internal:5] Set("PJSIP/002-00000031", "_ROUTENAME=Shar-Orsk_7XXX") in new stack
+    -- Executing [71222@from-internal:5] Set("PJSIP/002-00000031", "_ROUTENAME=shar_7XXX") in new stack
     -- Executing [71222@from-internal:6] Set("PJSIP/002-00000031", "MOHCLASS=default") in new stack
     -- Executing [71222@from-internal:7] Set("PJSIP/002-00000031", "_CALLERIDNAMEINTERNAL=Support-ATC") in new stack
     -- Executing [71222@from-internal:8] Set("PJSIP/002-00000031", "_CALLERIDNUMINTERNAL=002") in new stack
@@ -173,7 +173,7 @@ Console verbose was 2 and is now 3.
     -- Executing [s@macro-outbound-callerid:41] Set("PJSIP/002-00000031", "CDR(outbound_cnam)=Support-ATC") in new stack
     -- Executing [s@macro-dialout-trunk:17] GosubIf("PJSIP/002-00000031", "0?sub-flp-1,s,1()") in new stack
     -- Executing [s@macro-dialout-trunk:18] Set("PJSIP/002-00000031", "OUTNUM=1222") in new stack
-    -- Executing [s@macro-dialout-trunk:19] Set("PJSIP/002-00000031", "custom=IAX2/shar-orsk") in new stack
+    -- Executing [s@macro-dialout-trunk:19] Set("PJSIP/002-00000031", "custom=IAX2/shar") in new stack
     -- Executing [s@macro-dialout-trunk:20] ExecIf("PJSIP/002-00000031", "0?Set(DIAL_TRUNK_OPTIONS=M(setmusic^default)T)") in new stack
     -- Executing [s@macro-dialout-trunk:21] ExecIf("PJSIP/002-00000031", "0?Set(DIAL_TRUNK_OPTIONS=TM(confirm))") in new stack
     -- Executing [s@macro-dialout-trunk:22] Macro("PJSIP/002-00000031", "dialout-trunk-predial-hook,") in new stack
@@ -185,31 +185,31 @@ Console verbose was 2 and is now 3.
     -- Executing [s@macro-dialout-trunk:27] GotoIf("PJSIP/002-00000031", "0?customtrunk") in new stack
     -- Executing [s@macro-dialout-trunk:28] ExecIf("PJSIP/002-00000031", "0?Set(DIAL_TRUNK_OPTIONS=)") in new stack
     -- Executing [s@macro-dialout-trunk:29] Set("PJSIP/002-00000031", "HASH(__SIPHEADERS,Alert-Info)=unset") in new stack
-    -- Executing [s@macro-dialout-trunk:30] Dial("PJSIP/002-00000031", "IAX2/shar-orsk/1222,120,Tb(func-apply-sipheaders^s^1,(1))U(sub-send-obroute-email^1222^71222^1^1730780250^Support-ATC^002)") in new stack
-    -- IAX2/shar-orsk-32314 Internal Gosub(func-apply-sipheaders,s,1(1)) start
-    -- Executing [s@func-apply-sipheaders:1] NoOp("IAX2/shar-orsk-32314", "Applying SIP Headers to channel IAX2/shar-orsk-32314") in new stack
-    -- Executing [s@func-apply-sipheaders:2] Set("IAX2/shar-orsk-32314", "TECH=IAX2") in new stack
-    -- Executing [s@func-apply-sipheaders:3] Set("IAX2/shar-orsk-32314", "SIPHEADERKEYS=Alert-Info") in new stack
-    -- Executing [s@func-apply-sipheaders:4] While("IAX2/shar-orsk-32314", "1") in new stack
-    -- Executing [s@func-apply-sipheaders:5] Set("IAX2/shar-orsk-32314", "sipheader=unset") in new stack
-    -- Executing [s@func-apply-sipheaders:6] ExecIf("IAX2/shar-orsk-32314", "0?Set(PJSIP_HEADER(remove,Alert-Info)=)") in new stack
-    -- Executing [s@func-apply-sipheaders:7] ExecIf("IAX2/shar-orsk-32314", "0?Set(sipheader=<http://127.0.0.1>;info=unset)") in new stack
-    -- Executing [s@func-apply-sipheaders:8] ExecIf("IAX2/shar-orsk-32314", "0?Set(sipheader=<http://127.0.0.1>unset)") in new stack
-    -- Executing [s@func-apply-sipheaders:9] ExecIf("IAX2/shar-orsk-32314", "0?Set(PJSIP_HEADER(add,Alert-Info)=unset)") in new stack
-    -- Executing [s@func-apply-sipheaders:10] EndWhile("IAX2/shar-orsk-32314", "") in new stack
-    -- Executing [s@func-apply-sipheaders:4] While("IAX2/shar-orsk-32314", "0") in new stack
-    -- Executing [s@func-apply-sipheaders:11] Return("IAX2/shar-orsk-32314", "") in new stack
-  == Spawn extension (, 71222, 1) exited non-zero on 'IAX2/shar-orsk-32314'
-    -- IAX2/shar-orsk-32314 Internal Gosub(func-apply-sipheaders,s,1(1)) complete GOSUB_RETVAL=
-    -- Called IAX2/shar-orsk/1222
+    -- Executing [s@macro-dialout-trunk:30] Dial("PJSIP/002-00000031", "IAX2/shar/1222,120,Tb(func-apply-sipheaders^s^1,(1))U(sub-send-obroute-email^1222^71222^1^1730780250^Support-ATC^002)") in new stack
+    -- IAX2/shar-32314 Internal Gosub(func-apply-sipheaders,s,1(1)) start
+    -- Executing [s@func-apply-sipheaders:1] NoOp("IAX2/shar-32314", "Applying SIP Headers to channel IAX2/shar-32314") in new stack
+    -- Executing [s@func-apply-sipheaders:2] Set("IAX2/shar-32314", "TECH=IAX2") in new stack
+    -- Executing [s@func-apply-sipheaders:3] Set("IAX2/shar-32314", "SIPHEADERKEYS=Alert-Info") in new stack
+    -- Executing [s@func-apply-sipheaders:4] While("IAX2/shar-32314", "1") in new stack
+    -- Executing [s@func-apply-sipheaders:5] Set("IAX2/shar-32314", "sipheader=unset") in new stack
+    -- Executing [s@func-apply-sipheaders:6] ExecIf("IAX2/shar-32314", "0?Set(PJSIP_HEADER(remove,Alert-Info)=)") in new stack
+    -- Executing [s@func-apply-sipheaders:7] ExecIf("IAX2/shar-32314", "0?Set(sipheader=<http://127.0.0.1>;info=unset)") in new stack
+    -- Executing [s@func-apply-sipheaders:8] ExecIf("IAX2/shar-32314", "0?Set(sipheader=<http://127.0.0.1>unset)") in new stack
+    -- Executing [s@func-apply-sipheaders:9] ExecIf("IAX2/shar-32314", "0?Set(PJSIP_HEADER(add,Alert-Info)=unset)") in new stack
+    -- Executing [s@func-apply-sipheaders:10] EndWhile("IAX2/shar-32314", "") in new stack
+    -- Executing [s@func-apply-sipheaders:4] While("IAX2/shar-32314", "0") in new stack
+    -- Executing [s@func-apply-sipheaders:11] Return("IAX2/shar-32314", "") in new stack
+  == Spawn extension (, 71222, 1) exited non-zero on 'IAX2/shar-32314'
+    -- IAX2/shar-32314 Internal Gosub(func-apply-sipheaders,s,1(1)) complete GOSUB_RETVAL=
+    -- Called IAX2/shar/1222
     -- Call accepted by 85.192.165.51:4569 (format alaw)
     -- Format for call is (alaw)
-    -- IAX2/shar-orsk-32314 is ringing
-    -- IAX2/shar-orsk-32314 is ringing
-    -- IAX2/shar-orsk-32314 stopped sounds
-    -- IAX2/shar-orsk-32314 is ringing
-    -- IAX2/shar-orsk-32314 is ringing
-    -- Hungup 'IAX2/shar-orsk-32314'
+    -- IAX2/shar-32314 is ringing
+    -- IAX2/shar-32314 is ringing
+    -- IAX2/shar-32314 stopped sounds
+    -- IAX2/shar-32314 is ringing
+    -- IAX2/shar-32314 is ringing
+    -- Hungup 'IAX2/shar-32314'
   == Spawn extension (macro-dialout-trunk, s, 30) exited non-zero on 'PJSIP/002-00000031' in macro 'dialout-trunk'
   == Spawn extension (from-internal, 71222, 11) exited non-zero on 'PJSIP/002-00000031'
     -- Executing [h@from-internal:1] Macro("PJSIP/002-00000031", "hangupcall") in new stack
