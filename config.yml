@@ -76,7 +76,7 @@ params:
   # home-info mode
   homeInfoParams:
     Title: "SIP-привет \U0001F44B"
-    Content: Добро пожаловать на сайт Интелком
+    Content: Телефонные решения на базе АТС Asterisk
 
   socialIcons:
     - name: telegram
