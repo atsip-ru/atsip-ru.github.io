@@ -16,9 +16,9 @@ minify:
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: AtSIP
-  description: "Atsip Asterisk telephony"
+  description: "Решения телефонии на базе открытой платформы IP-телефонии Asterisk; Оборудование для создания телефонных систем VoIP; Типовые и оригинальные способы реализации телефонных решений, способы модернизации телефонии организаций и УАТС; Варианты и методы экономии на междугородних переговорах;"
   keywords: [SIP, Asterisk, IT, Orsk, Orenburg, Орск, Оренбург, IP-Telephony, IP-телефония]
-  author: ["Dmitriy Q", "Anatoliy"]
+  author: ["Dmitriy Q"]
   # author: ["Me", "You"] # multiple authors
   images: ["<link or path of image for opengraph, twitter-cards>"]
   DateFormat: "January 2, 2006"
