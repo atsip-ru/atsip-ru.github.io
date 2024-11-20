@@ -97,10 +97,10 @@ params:
     hiddenInList: true # hide on list pages and home
     hiddenInSingle: true # hide on single page
 
-  editPost:
-    URL: "https://github.com/atsip-ru/atsip-ru.github.io/tree/master/content"
-    Text: "Внесите изменения" # edit text
-    appendFilePath: true # to append file path to Edit link
+#  editPost:
+#    URL: "https://github.com/atsip-ru/atsip-ru.github.io/tree/master/content"
+#    Text: "Внесите изменения" # edit text
+#    appendFilePath: false # to append file path to Edit link
 
   # for search
   # https://fusejs.io/api/options.html
