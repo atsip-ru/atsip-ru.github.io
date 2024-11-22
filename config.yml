@@ -83,6 +83,8 @@ params:
       url: "https://t.me/intelcom56"
     - name: github
       url: "https://github.com/atsip-ru"
+    - name: phone
+      url: "tel:+79058994494"
 
   analytics:
 #    google:
@@ -130,9 +132,9 @@ menu:
       name: О нас
       url: /about/
       weight: 30
-#    - identifier: example
-#      name: example.org
-#      url: https://example.org
+#    - identifier: phone
+#      name: +79058994494
+#      url: +79058994494
 #      weight: 40
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
