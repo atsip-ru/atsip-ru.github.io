@@ -11,8 +11,78 @@
     </image>
     <generator>Hugo -- 0.134.2</generator>
     <language>ru</language>
-    <lastBuildDate>Wed, 13 Nov 2024 16:47:48 +0500</lastBuildDate>
+    <lastBuildDate>Fri, 22 Nov 2024 12:51:44 +0500</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Оценка качества обслуживания</title>
+      <link>http://localhost:1313/articles/qam/</link>
+      <pubDate>Fri, 22 Nov 2024 12:51:44 +0500</pubDate>
+      <guid>http://localhost:1313/articles/qam/</guid>
+      <description>&lt;p&gt;Поступил заказ сделать модуль оценки работы оператора и качества оказания услуги.&lt;/p&gt;
+&lt;p&gt;За основу взял статью &lt;a href=&#34;https://dzen.ru/a/W_ZfFFGEzACpkDVw&#34;&gt;merion networks&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Всё делалось на FreePBX 15 и Asterisk 18.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;В файл /etc/asterisk/queues_post_custom.conf вносим редакцию для нужной очереди (например 500) чтобы получить номер ответившего агента (можно и проще, но не срабатывало с IAX):&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[500](+)
+setinterfacevar=yes
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Клепаем само меню в /etc/asterisk/extensions_custom.conf:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[assessment]
+exten =&amp;gt; _X.,1,Answer()
+     same =&amp;gt; n,Set(CHANNEL(language)=ru)
+     same =&amp;gt; n,Set(COUNT=1)
+     same =&amp;gt; n,Wait(1)
+     same =&amp;gt; n,Playback(custom/qam-intro)
+     same =&amp;gt; n,Set(TIMEOUT(digit)=1)
+     same =&amp;gt; n,NoOP(Count: ${COUNT})
+     same =&amp;gt; n,GotoIf($[&amp;#34;${COUNT}&amp;#34; = &amp;#34;1&amp;#34;]?start-1)
+     same =&amp;gt; n,GotoIf($[&amp;#34;${COUNT}&amp;#34; = &amp;#34;2&amp;#34;]?start-2:hh,1)
+     same =&amp;gt; n(start-1),Background(custom/qam-question-service,m)       ;озвучиваем предложение об оценке оператора
+     same =&amp;gt; n,WaitExten(10)
+     same =&amp;gt; n,Goto(t,1)        ;переход к завершению по тайм-ауту
+     same =&amp;gt; n(start-2),Background(custom/qam-question-operator,m)      ;озвучиваем предложение об оценке сервиса
+     same =&amp;gt; n,WaitExten(10)
+     same =&amp;gt; n,Goto(t,1)        ;переход к завершению по тайм-ауту
+
+exten =&amp;gt; 1,1,NoOP(${CDR(src)}, ${DIALEDPEERNUMBER}, ${NODEST}, 1, ${COUNT})
+   same =&amp;gt; n,AGI(survey.php, ${CDR(src)}, ${DIALEDPEERNUMBER}, ${NODEST}, 1, ${COUNT})  ;если клиент вводит 1, то отправляем даные через AGI в скрипт, который отправляет их в SQL
+   same =&amp;gt; n,Set(COUNT=$[${COUNT} + 1])
+   same =&amp;gt; n,Goto(_X.,6)
+
+exten =&amp;gt; 2,1,AGI(survey.php, ${CDR(src)}, ${DIALEDPEERNUMBER}, ${NODEST}, 2, ${COUNT})
+   same =&amp;gt; n,Set(COUNT=$[${COUNT} + 1])
+   same =&amp;gt; n,Goto(_X.,6)
+
+exten =&amp;gt; 3,1,AGI(survey.php, ${CDR(src)}, ${DIALEDPEERNUMBER}, ${NODEST}, 3, ${COUNT})
+   same =&amp;gt; n,Set(COUNT=$[${COUNT} + 1])
+   same =&amp;gt; n,Goto(_X.,6)
+
+exten =&amp;gt; 4,1,AGI(survey.php, ${CDR(src)}, ${DIALEDPEERNUMBER}, ${NODEST}, 4, ${COUNT})
+   same =&amp;gt; n,Set(COUNT=$[${COUNT} + 1])
+   same =&amp;gt; n,Goto(_X.,6)
+
+exten =&amp;gt; 5,1,AGI(survey.php, ${CDR(src)}, ${DIALEDPEERNUMBER}, ${NODEST}, 5, ${COUNT})
+   same =&amp;gt; n,Set(COUNT=$[${COUNT} + 1])
+   same =&amp;gt; n,Goto(_X.,6)
+
+exten =&amp;gt; t,1,Playback(custom/zapis_7)
+   same =&amp;gt; n,Hangup()
+
+exten =&amp;gt; _[06-9],1,Playback(custom/zapis_18)
+         same =&amp;gt; n,Goto(_X.,7)
+exten =&amp;gt; i,1,Playback(custom/zapis_18)
+   same =&amp;gt; n,Goto(_X.,7)
+
+exten =&amp;gt; hh,1,Playback(custom/qam-end,skip)
+    same =&amp;gt; n,Hangup()
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Добавить скрипт для обработки и отправки данных в БД /var/lib/asterisk/agi-bin/survey.php
+Назначить ему права на исполнение и сменить пользователя/группу на asterisk.
+Добавить и файлы из контекста ivr-qam для воспроизведения приветствия и ошибок при тайм-ауте и неверном вводе и также поправить им права.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Обзор возможностей Asterisk</title>
       <link>http://localhost:1313/instructions/asterisk-features-overview/</link>
