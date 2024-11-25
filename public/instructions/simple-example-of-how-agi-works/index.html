@@ -1,0 +1,224 @@
+<!doctype html><html lang=en dir=auto><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Простой пример работы AGI | AtSIP</title>
+<meta name=keywords content><meta name=description content="Рассмотрим работу AGI на примере скрипта:
+#!/usr/bin/php7.3 -q
+
+<?php
+
+require('phpagi.php');
+$AGI = new AGI();
+$filepath = &#34;/var/www/html/statistic.local/&#34;;  //Путь к файлу
+$filedb = $AGI->request['agi_arg_1'];      //Имя файла с базой
+$ls = $AGI->request['agi_arg_2'];          //Лицевой счет абонента
+$fullfile = $filepath . $filedb;
+
+$arr = file($fullfile);
+    foreach($arr as $v){
+        if (strpos($v,$ls,0) !== false){
+            $string = $v;
+            $ls_array = explode('|', $string);
+            if ($ls == $ls_array[2]){
+                $dolg = $ls_array[6];
+                break;
+            }
+        }
+    }
+
+$summa = explode('.',$dolg);
+$summa_rub = (int) $summa[0];
+$summa_kop = (int) $summa[1];
+
+if ($summa_rub % 10 == 1){
+    $sound_r = &#34;rouble&#34;;
+}
+elseif (in_array(($summa_rub % 10), [2, 3, 4])){
+    $sound_r = &#34;roublya&#34;;
+}
+elseif (in_array(($summa_rub % 10), [5,6,7,8,9,0])){
+    $sound_r = &#34;roubley&#34;;
+}
+
+if ($summa_kop % 10 == 1){
+    $sound_k = &#34;copeck&#34;;
+}
+elseif (in_array(($summa_kop % 10), [2, 3, 4])){
+    $sound_k = &#34;copeck-i&#34;;
+}
+elseif (in_array(($summa_kop % 10), [5,6,7,8,9,0])){
+    $sound_k = &#34;copecks&#34;;
+}
+
+$AGI->set_variable('DOLG',$dolg);
+$AGI->set_variable('DOLG_R',$summa[0]);
+$AGI->set_variable('DOLG_K',$summa[1]);
+$AGI->set_variable('sound_r',$sound_r);
+$AGI->set_variable('sound_k',$sound_k);
+?>
+Вызывается из диалплана:"><meta name=author content="Dmitriy Q"><link rel=canonical href=http://localhost:1313/instructions/simple-example-of-how-agi-works/><meta name=yandex-verification content="a654f52a611b9bb6"><link crossorigin=anonymous href=/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as=style><link rel=icon href=http://localhost:1313/favicon/favicon.ico><link rel=icon type=image/png sizes=16x16 href=http://localhost:1313/favicon/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=http://localhost:1313/favicon/favicon-32x32.png><link rel=apple-touch-icon href=http://localhost:1313/favicon/apple-touch-icon.png><link rel=mask-icon href=http://localhost:1313/%3Clink%20/%20abs%20url%3E><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=http://localhost:1313/instructions/simple-example-of-how-agi-works/><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><meta property="og:title" content="Простой пример работы AGI"><meta property="og:description" content="Рассмотрим работу AGI на примере скрипта:
+#!/usr/bin/php7.3 -q
+
+<?php
+
+require('phpagi.php');
+$AGI = new AGI();
+$filepath = &#34;/var/www/html/statistic.local/&#34;;  //Путь к файлу
+$filedb = $AGI->request['agi_arg_1'];      //Имя файла с базой
+$ls = $AGI->request['agi_arg_2'];          //Лицевой счет абонента
+$fullfile = $filepath . $filedb;
+
+$arr = file($fullfile);
+    foreach($arr as $v){
+        if (strpos($v,$ls,0) !== false){
+            $string = $v;
+            $ls_array = explode('|', $string);
+            if ($ls == $ls_array[2]){
+                $dolg = $ls_array[6];
+                break;
+            }
+        }
+    }
+
+$summa = explode('.',$dolg);
+$summa_rub = (int) $summa[0];
+$summa_kop = (int) $summa[1];
+
+if ($summa_rub % 10 == 1){
+    $sound_r = &#34;rouble&#34;;
+}
+elseif (in_array(($summa_rub % 10), [2, 3, 4])){
+    $sound_r = &#34;roublya&#34;;
+}
+elseif (in_array(($summa_rub % 10), [5,6,7,8,9,0])){
+    $sound_r = &#34;roubley&#34;;
+}
+
+if ($summa_kop % 10 == 1){
+    $sound_k = &#34;copeck&#34;;
+}
+elseif (in_array(($summa_kop % 10), [2, 3, 4])){
+    $sound_k = &#34;copeck-i&#34;;
+}
+elseif (in_array(($summa_kop % 10), [5,6,7,8,9,0])){
+    $sound_k = &#34;copecks&#34;;
+}
+
+$AGI->set_variable('DOLG',$dolg);
+$AGI->set_variable('DOLG_R',$summa[0]);
+$AGI->set_variable('DOLG_K',$summa[1]);
+$AGI->set_variable('sound_r',$sound_r);
+$AGI->set_variable('sound_k',$sound_k);
+?>
+Вызывается из диалплана:"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost:1313/instructions/simple-example-of-how-agi-works/"><meta property="og:image" content="http://localhost:1313/logo.png"><meta property="article:section" content="instructions"><meta property="article:published_time" content="2024-11-25T17:19:06+05:00"><meta property="article:modified_time" content="2024-11-25T17:19:06+05:00"><meta property="og:site_name" content="AtSIP"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="http://localhost:1313/logo.png"><meta name=twitter:title content="Простой пример работы AGI"><meta name=twitter:description content="Рассмотрим работу AGI на примере скрипта:
+#!/usr/bin/php7.3 -q
+
+<?php
+
+require('phpagi.php');
+$AGI = new AGI();
+$filepath = &#34;/var/www/html/statistic.local/&#34;;  //Путь к файлу
+$filedb = $AGI->request['agi_arg_1'];      //Имя файла с базой
+$ls = $AGI->request['agi_arg_2'];          //Лицевой счет абонента
+$fullfile = $filepath . $filedb;
+
+$arr = file($fullfile);
+    foreach($arr as $v){
+        if (strpos($v,$ls,0) !== false){
+            $string = $v;
+            $ls_array = explode('|', $string);
+            if ($ls == $ls_array[2]){
+                $dolg = $ls_array[6];
+                break;
+            }
+        }
+    }
+
+$summa = explode('.',$dolg);
+$summa_rub = (int) $summa[0];
+$summa_kop = (int) $summa[1];
+
+if ($summa_rub % 10 == 1){
+    $sound_r = &#34;rouble&#34;;
+}
+elseif (in_array(($summa_rub % 10), [2, 3, 4])){
+    $sound_r = &#34;roublya&#34;;
+}
+elseif (in_array(($summa_rub % 10), [5,6,7,8,9,0])){
+    $sound_r = &#34;roubley&#34;;
+}
+
+if ($summa_kop % 10 == 1){
+    $sound_k = &#34;copeck&#34;;
+}
+elseif (in_array(($summa_kop % 10), [2, 3, 4])){
+    $sound_k = &#34;copeck-i&#34;;
+}
+elseif (in_array(($summa_kop % 10), [5,6,7,8,9,0])){
+    $sound_k = &#34;copecks&#34;;
+}
+
+$AGI->set_variable('DOLG',$dolg);
+$AGI->set_variable('DOLG_R',$summa[0]);
+$AGI->set_variable('DOLG_K',$summa[1]);
+$AGI->set_variable('sound_r',$sound_r);
+$AGI->set_variable('sound_k',$sound_k);
+?>
+Вызывается из диалплана:"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Instructions","item":"http://localhost:1313/instructions/"},{"@type":"ListItem","position":2,"name":"Простой пример работы AGI","item":"http://localhost:1313/instructions/simple-example-of-how-agi-works/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Простой пример работы AGI","name":"Простой пример работы AGI","description":"Рассмотрим работу AGI на примере скрипта:\n#!/usr/bin/php7.3 -q \u0026lt;?php require(\u0026#39;phpagi.php\u0026#39;); $AGI = new AGI(); $filepath = \u0026#34;/var/www/html/statistic.local/\u0026#34;; //Путь к файлу $filedb = $AGI-\u0026gt;request[\u0026#39;agi_arg_1\u0026#39;]; //Имя файла с базой $ls = $AGI-\u0026gt;request[\u0026#39;agi_arg_2\u0026#39;]; //Лицевой счет абонента $fullfile = $filepath . $filedb; $arr = file($fullfile); foreach($arr as $v){ if (strpos($v,$ls,0) !== false){ $string = $v; $ls_array = explode(\u0026#39;|\u0026#39;, $string); if ($ls == $ls_array[2]){ $dolg = $ls_array[6]; break; } } } $summa = explode(\u0026#39;.\u0026#39;,$dolg); $summa_rub = (int) $summa[0]; $summa_kop = (int) $summa[1]; if ($summa_rub % 10 == 1){ $sound_r = \u0026#34;rouble\u0026#34;; } elseif (in_array(($summa_rub % 10), [2, 3, 4])){ $sound_r = \u0026#34;roublya\u0026#34;; } elseif (in_array(($summa_rub % 10), [5,6,7,8,9,0])){ $sound_r = \u0026#34;roubley\u0026#34;; } if ($summa_kop % 10 == 1){ $sound_k = \u0026#34;copeck\u0026#34;; } elseif (in_array(($summa_kop % 10), [2, 3, 4])){ $sound_k = \u0026#34;copeck-i\u0026#34;; } elseif (in_array(($summa_kop % 10), [5,6,7,8,9,0])){ $sound_k = \u0026#34;copecks\u0026#34;; } $AGI-\u0026gt;set_variable(\u0026#39;DOLG\u0026#39;,$dolg); $AGI-\u0026gt;set_variable(\u0026#39;DOLG_R\u0026#39;,$summa[0]); $AGI-\u0026gt;set_variable(\u0026#39;DOLG_K\u0026#39;,$summa[1]); $AGI-\u0026gt;set_variable(\u0026#39;sound_r\u0026#39;,$sound_r); $AGI-\u0026gt;set_variable(\u0026#39;sound_k\u0026#39;,$sound_k); ?\u0026gt; Вызывается из диалплана:\n","keywords":[],"articleBody":"Рассмотрим работу AGI на примере скрипта:\n#!/usr/bin/php7.3 -q \u003c?php require('phpagi.php'); $AGI = new AGI(); $filepath = \"/var/www/html/statistic.local/\"; //Путь к файлу $filedb = $AGI-\u003erequest['agi_arg_1']; //Имя файла с базой $ls = $AGI-\u003erequest['agi_arg_2']; //Лицевой счет абонента $fullfile = $filepath . $filedb; $arr = file($fullfile); foreach($arr as $v){ if (strpos($v,$ls,0) !== false){ $string = $v; $ls_array = explode('|', $string); if ($ls == $ls_array[2]){ $dolg = $ls_array[6]; break; } } } $summa = explode('.',$dolg); $summa_rub = (int) $summa[0]; $summa_kop = (int) $summa[1]; if ($summa_rub % 10 == 1){ $sound_r = \"rouble\"; } elseif (in_array(($summa_rub % 10), [2, 3, 4])){ $sound_r = \"roublya\"; } elseif (in_array(($summa_rub % 10), [5,6,7,8,9,0])){ $sound_r = \"roubley\"; } if ($summa_kop % 10 == 1){ $sound_k = \"copeck\"; } elseif (in_array(($summa_kop % 10), [2, 3, 4])){ $sound_k = \"copeck-i\"; } elseif (in_array(($summa_kop % 10), [5,6,7,8,9,0])){ $sound_k = \"copecks\"; } $AGI-\u003eset_variable('DOLG',$dolg); $AGI-\u003eset_variable('DOLG_R',$summa[0]); $AGI-\u003eset_variable('DOLG_K',$summa[1]); $AGI-\u003eset_variable('sound_r',$sound_r); $AGI-\u003eset_variable('sound_k',$sound_k); ?\u003e Вызывается из диалплана:\nsame =\u003e n,agi(getdolg.php,dbsum.txt,${bill}) Скрипт получает в виде аргументов имя файла с данными и лицевой счет абонента, парсит его и возвращает сумму долга из одного из столбцов. $filedb = $AGI-\u003erequest['agi_arg_1']; присваивает имя файла с данными переменной, а $ls = $AGI-\u003erequest['agi_arg_2']; соответственно получаемый лицевой счет.\nДалее читается файл, ищется в нем ЛС по 3 (2 по индексу) столбцу и возвращает значение из 7 (6 по индексу) столбца, присваивая его значение переменной dolg. Далее сумма разбивается на рубли и копейки и подгоняются склонения, присваиваются нужные значения, которые после и передаются из AGI в диалплан в виде:\n$AGI-\u003eset_variable('переменная_в_диалплане',$значение_переменной_AGI);\nDOLG в самом дилалплане, конечно, не нужна, она скорее для проверки\nDOLG_R - сумма в рублях\nDOLG_K - сумма в копейках\nsound_r - файл озвучки для “рублей”\nsound_k - файл озвучки для “копеек”\n","wordCount":"273","inLanguage":"en","image":"http://localhost:1313/logo.png","datePublished":"2024-11-25T17:19:06+05:00","dateModified":"2024-11-25T17:19:06+05:00","author":[{"@type":"Person","name":"Dmitriy Q"}],"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:1313/instructions/simple-example-of-how-agi-works/"},"publisher":{"@type":"Organization","name":"AtSIP","logo":{"@type":"ImageObject","url":"http://localhost:1313/favicon/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=http://localhost:1313/ accesskey=h title="  (Alt + H)"><img src=http://localhost:1313/logo_hu4588996594597770302.png alt aria-label=logo height=35></a><div class=logo-switches></div></div><ul id=menu><li><a href=http://localhost:1313/articles/ title=Статьи><span>Статьи</span></a></li><li><a href=http://localhost:1313/instructions/ title=Инструкции><span>Инструкции</span></a></li><li><a href=http://localhost:1313/about/ title="О нас"><span>О нас</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=http://localhost:1313/>Home</a>&nbsp;»&nbsp;<a href=http://localhost:1313/instructions/>Instructions</a></div><h1 class="post-title entry-hint-parent">Простой пример работы AGI</h1><div class=post-meta><span title='2024-11-25 17:19:06 +0500 +05'>25 November 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Dmitriy Q</div></header><div class=post-content><p>Рассмотрим работу AGI на примере скрипта:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=c1>#!/usr/bin/php7.3 -q
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>require</span><span class=p>(</span><span class=s1>&#39;phpagi.php&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nv>$AGI</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>AGI</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=nv>$filepath</span> <span class=o>=</span> <span class=s2>&#34;/var/www/html/statistic.local/&#34;</span><span class=p>;</span>  <span class=c1>//Путь к файлу
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nv>$filedb</span> <span class=o>=</span> <span class=nv>$AGI</span><span class=o>-&gt;</span><span class=na>request</span><span class=p>[</span><span class=s1>&#39;agi_arg_1&#39;</span><span class=p>];</span>      <span class=c1>//Имя файла с базой
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nv>$ls</span> <span class=o>=</span> <span class=nv>$AGI</span><span class=o>-&gt;</span><span class=na>request</span><span class=p>[</span><span class=s1>&#39;agi_arg_2&#39;</span><span class=p>];</span>          <span class=c1>//Лицевой счет абонента
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nv>$fullfile</span> <span class=o>=</span> <span class=nv>$filepath</span> <span class=o>.</span> <span class=nv>$filedb</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>$arr</span> <span class=o>=</span> <span class=nx>file</span><span class=p>(</span><span class=nv>$fullfile</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>foreach</span><span class=p>(</span><span class=nv>$arr</span> <span class=k>as</span> <span class=nv>$v</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=nx>strpos</span><span class=p>(</span><span class=nv>$v</span><span class=p>,</span><span class=nv>$ls</span><span class=p>,</span><span class=mi>0</span><span class=p>)</span> <span class=o>!==</span> <span class=k>false</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>            <span class=nv>$string</span> <span class=o>=</span> <span class=nv>$v</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=nv>$ls_array</span> <span class=o>=</span> <span class=nx>explode</span><span class=p>(</span><span class=s1>&#39;|&#39;</span><span class=p>,</span> <span class=nv>$string</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=p>(</span><span class=nv>$ls</span> <span class=o>==</span> <span class=nv>$ls_array</span><span class=p>[</span><span class=mi>2</span><span class=p>]){</span>
+</span></span><span class=line><span class=cl>                <span class=nv>$dolg</span> <span class=o>=</span> <span class=nv>$ls_array</span><span class=p>[</span><span class=mi>6</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>                <span class=k>break</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>$summa</span> <span class=o>=</span> <span class=nx>explode</span><span class=p>(</span><span class=s1>&#39;.&#39;</span><span class=p>,</span><span class=nv>$dolg</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nv>$summa_rub</span> <span class=o>=</span> <span class=p>(</span><span class=nx>int</span><span class=p>)</span> <span class=nv>$summa</span><span class=p>[</span><span class=mi>0</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=nv>$summa_kop</span> <span class=o>=</span> <span class=p>(</span><span class=nx>int</span><span class=p>)</span> <span class=nv>$summa</span><span class=p>[</span><span class=mi>1</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=p>(</span><span class=nv>$summa_rub</span> <span class=o>%</span> <span class=mi>10</span> <span class=o>==</span> <span class=mi>1</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$sound_r</span> <span class=o>=</span> <span class=s2>&#34;rouble&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=k>elseif</span> <span class=p>(</span><span class=nx>in_array</span><span class=p>((</span><span class=nv>$summa_rub</span> <span class=o>%</span> <span class=mi>10</span><span class=p>),</span> <span class=p>[</span><span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>,</span> <span class=mi>4</span><span class=p>])){</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$sound_r</span> <span class=o>=</span> <span class=s2>&#34;roublya&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=k>elseif</span> <span class=p>(</span><span class=nx>in_array</span><span class=p>((</span><span class=nv>$summa_rub</span> <span class=o>%</span> <span class=mi>10</span><span class=p>),</span> <span class=p>[</span><span class=mi>5</span><span class=p>,</span><span class=mi>6</span><span class=p>,</span><span class=mi>7</span><span class=p>,</span><span class=mi>8</span><span class=p>,</span><span class=mi>9</span><span class=p>,</span><span class=mi>0</span><span class=p>])){</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$sound_r</span> <span class=o>=</span> <span class=s2>&#34;roubley&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=p>(</span><span class=nv>$summa_kop</span> <span class=o>%</span> <span class=mi>10</span> <span class=o>==</span> <span class=mi>1</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$sound_k</span> <span class=o>=</span> <span class=s2>&#34;copeck&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=k>elseif</span> <span class=p>(</span><span class=nx>in_array</span><span class=p>((</span><span class=nv>$summa_kop</span> <span class=o>%</span> <span class=mi>10</span><span class=p>),</span> <span class=p>[</span><span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>,</span> <span class=mi>4</span><span class=p>])){</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$sound_k</span> <span class=o>=</span> <span class=s2>&#34;copeck-i&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=k>elseif</span> <span class=p>(</span><span class=nx>in_array</span><span class=p>((</span><span class=nv>$summa_kop</span> <span class=o>%</span> <span class=mi>10</span><span class=p>),</span> <span class=p>[</span><span class=mi>5</span><span class=p>,</span><span class=mi>6</span><span class=p>,</span><span class=mi>7</span><span class=p>,</span><span class=mi>8</span><span class=p>,</span><span class=mi>9</span><span class=p>,</span><span class=mi>0</span><span class=p>])){</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$sound_k</span> <span class=o>=</span> <span class=s2>&#34;copecks&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>$AGI</span><span class=o>-&gt;</span><span class=na>set_variable</span><span class=p>(</span><span class=s1>&#39;DOLG&#39;</span><span class=p>,</span><span class=nv>$dolg</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nv>$AGI</span><span class=o>-&gt;</span><span class=na>set_variable</span><span class=p>(</span><span class=s1>&#39;DOLG_R&#39;</span><span class=p>,</span><span class=nv>$summa</span><span class=p>[</span><span class=mi>0</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl><span class=nv>$AGI</span><span class=o>-&gt;</span><span class=na>set_variable</span><span class=p>(</span><span class=s1>&#39;DOLG_K&#39;</span><span class=p>,</span><span class=nv>$summa</span><span class=p>[</span><span class=mi>1</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl><span class=nv>$AGI</span><span class=o>-&gt;</span><span class=na>set_variable</span><span class=p>(</span><span class=s1>&#39;sound_r&#39;</span><span class=p>,</span><span class=nv>$sound_r</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nv>$AGI</span><span class=o>-&gt;</span><span class=na>set_variable</span><span class=p>(</span><span class=s1>&#39;sound_k&#39;</span><span class=p>,</span><span class=nv>$sound_k</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=cp>?&gt;</span><span class=err>
+</span></span></span></code></pre></div><p>Вызывается из диалплана:</p><pre tabindex=0><code>same =&gt; n,agi(getdolg.php,dbsum.txt,${bill})
+</code></pre><p>Скрипт получает в виде аргументов имя файла с данными и лицевой счет абонента, парсит его и возвращает сумму долга из одного из столбцов.
+<code>$filedb = $AGI->request['agi_arg_1'];</code> присваивает имя файла с данными переменной, а <code>$ls = $AGI->request['agi_arg_2'];</code> соответственно получаемый лицевой счет.</p><p>Далее читается файл, ищется в нем ЛС по 3 (2 по индексу) столбцу и возвращает значение из 7 (6 по индексу) столбца, присваивая его значение переменной <code>dolg</code>.
+Далее сумма разбивается на рубли и копейки и подгоняются склонения, присваиваются нужные значения, которые после и передаются из AGI в диалплан в виде:</p><p><code>$AGI->set_variable('переменная_в_диалплане',$значение_переменной_AGI);</code></p><p><code>DOLG</code> в самом дилалплане, конечно, не нужна, она скорее для проверки</p><p><code>DOLG_R</code> - сумма в рублях</p><p><code>DOLG_K</code> - сумма в копейках</p><p><code>sound_r</code> - файл озвучки для &ldquo;рублей&rdquo;</p><p><code>sound_k</code> - файл озвучки для &ldquo;копеек&rdquo;</p></div><footer class=post-footer><ul class=post-tags></ul><ul class=share-buttons><li><a target=_blank rel="noopener noreferrer" aria-label="share Простой пример работы AGI on x" href="https://x.com/intent/tweet/?text=%d0%9f%d1%80%d0%be%d1%81%d1%82%d0%be%d0%b9%20%d0%bf%d1%80%d0%b8%d0%bc%d0%b5%d1%80%20%d1%80%d0%b0%d0%b1%d0%be%d1%82%d1%8b%20AGI&amp;url=http%3a%2f%2flocalhost%3a1313%2finstructions%2fsimple-example-of-how-agi-works%2f&amp;hashtags="><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M512 62.554V449.446C512 483.97 483.97 512 449.446 512H62.554C28.03 512 0 483.97.0 449.446V62.554C0 28.03 28.029.0 62.554.0H449.446C483.971.0 512 28.03 512 62.554zM269.951 190.75 182.567 75.216H56L207.216 272.95 63.9 436.783h61.366L235.9 310.383l96.667 126.4H456L298.367 228.367l134-153.151H371.033zM127.633 110h36.468l219.38 290.065H349.5z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share Простой пример работы AGI on telegram" href="https://telegram.me/share/url?text=%d0%9f%d1%80%d0%be%d1%81%d1%82%d0%be%d0%b9%20%d0%bf%d1%80%d0%b8%d0%bc%d0%b5%d1%80%20%d1%80%d0%b0%d0%b1%d0%be%d1%82%d1%8b%20AGI&amp;url=http%3a%2f%2flocalhost%3a1313%2finstructions%2fsimple-example-of-how-agi-works%2f"><svg viewBox="2 2 28 28" height="30" width="30" fill="currentcolor"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg></a></li></ul></footer></article></main><footer class=footer><span>&copy; 2024 <a href=http://localhost:1313/>AtSIP</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
