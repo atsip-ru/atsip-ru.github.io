@@ -73,7 +73,31 @@ exten => hh,1,Playback(custom/qam-end,skip)
 Назначить ему права на исполнение и сменить пользователя/группу на asterisk.
 Добавить и файлы из контекста ivr-qam для воспроизведения приветствия и ошибок при тайм-ауте и неверном вводе и также поправить им права.
 
-4. Для срабатывания перехода на голосовое меню после разговора оператора есть 2 варианта: опция `c` для приложения `Queue()` и `g` для `Dial()`.
+4. Создаем в БД asteriskcdrdb 2 таблицы: для оценки работы оператора:
+
+```
+CREATE TABLE `oper_survey` (
+  `num` varchar(20) DEFAULT NULL,
+  `operator` varchar(20) DEFAULT NULL,
+  `queue` varchar(20) DEFAULT NULL,
+  `valuation` varchar(20) DEFAULT NULL,
+  `date` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 |
+```
+
+и оценки услуги:
+
+```
+CREATE TABLE `service_survey` (
+  `num` varchar(20) DEFAULT NULL,
+  `operator` varchar(20) DEFAULT NULL,
+  `queue` varchar(20) DEFAULT NULL,
+  `valuation` varchar(20) DEFAULT NULL,
+  `date` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 |
+```
+
+5. Для срабатывания перехода на голосовое меню после разговора оператора есть 2 варианта: опция `c` для приложения `Queue()` и `g` для `Dial()`.
 Выбираю второй вариант. Для этого добавляем в extensions_custom.conf:
 
 ```
@@ -93,7 +117,7 @@ exten => _X.,1,NoOp(Post call survey beginning)
      same => n,Hangup()
 ```
 
-5. Ну и теперь необходимо добавлять операторов с этим контекстом, либо вручную
+6. Ну и теперь необходимо добавлять операторов с этим контекстом, либо вручную
 
 ```
 [500]

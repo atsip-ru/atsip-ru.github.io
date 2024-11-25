@@ -11,8 +11,81 @@
     </image>
     <generator>Hugo -- 0.134.2</generator>
     <language>ru</language>
-    <lastBuildDate>Fri, 22 Nov 2024 12:51:44 +0500</lastBuildDate>
+    <lastBuildDate>Mon, 25 Nov 2024 13:08:32 +0500</lastBuildDate>
     <atom:link href="http://localhost:1313/articles/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Оценка качества обслуживания в Asterisk (альтернатива)</title>
+      <link>http://localhost:1313/articles/qam-alternative/</link>
+      <pubDate>Mon, 25 Nov 2024 13:08:32 +0500</pubDate>
+      <guid>http://localhost:1313/articles/qam-alternative/</guid>
+      <description>&lt;p&gt;Альтернативное решение для оценки качества (на примере 200 очереди).&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;В файл &lt;em&gt;/etc/asterisk/queues_post_custom.conf&lt;/em&gt; вносим редакцию для 200 очереди чтобы получить номер ответившего агента (можно и проще, но не срабатывало с IAX):&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[200](+)
+setinterfacevar=yes
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Создаем таблицу &lt;code&gt;service_survey&lt;/code&gt; в БД &lt;code&gt;asteriskcdrdb&lt;/code&gt; для значений:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;CREATE TABLE `service_survey` (
+  `num` varchar(20) DEFAULT NULL,
+  `operator` varchar(20) DEFAULT NULL,
+  `queue` varchar(20) DEFAULT NULL,
+  `valuation` varchar(20) DEFAULT NULL,
+  `date` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;В &lt;em&gt;func_odbc.conf&lt;/em&gt; добавляем функцию записи в базу:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[qam]
+writehandle=asteriskcdrdb
+writesql=INSERT INTO service_survey (`num`, `operator`, `queue`, `valuation`, `date`) VALUES (&amp;#39;${VAL1}&amp;#39;, &amp;#39;${VAL2}&amp;#39;, &amp;#39;${VAL3}&amp;#39;, &amp;#39;${VAL4}&amp;#39;, NOW())
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Клепаем само меню в &lt;em&gt;/etc/asterisk/extensions_custom.conf&lt;/em&gt;:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[ivr-qam]
+exten =&amp;gt; s,1,Answer()
+   same =&amp;gt; n,Wait(1)
+   same =&amp;gt; n,Set(TIMEOUT(digit)=1)
+   same =&amp;gt; n,Set(QUEUEAGENT=${CUT(CUT(MEMBERINTERFACE,@,1),/,2)})
+   same =&amp;gt; n,NoOP(Answered Agent: ${QUEUEAGENT})
+   ;запись с просьбой оценить качество предоставленной услуги
+   same =&amp;gt; n,Background(/var/lib/asterisk/sounds/ru/custom/qam-question-service,m)
+   ;Ожидание оценки - 5 секунд, хотя вводить можно уже во время голосового приветствия
+   same =&amp;gt; n,WaitExten(5)
+   same =&amp;gt; n,Goto(t,1)
+
+exten =&amp;gt; 1,1,NoOP(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 1)
+   same =&amp;gt; n,ODBC_qam(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 1)
+   same =&amp;gt; n,Goto(hh,1)
+
+exten =&amp;gt; 2,1,ODBC_qam(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 2)
+   same =&amp;gt; n,Goto(hh,1)
+
+exten =&amp;gt; 3,1,ODBC_qam(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 3)
+   same =&amp;gt; n,Goto(hh,1)
+
+exten =&amp;gt; 4,1,ODBC_qam(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 4)
+   same =&amp;gt; n,Goto(hh,1)
+
+exten =&amp;gt; 5,1,ODBC_qam(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 5)
+   same =&amp;gt; n,Goto(hh,1)
+
+;запись о тайм-ауте получения ответа
+exten =&amp;gt; t,1,Playback(/var/lib/asterisk/sounds/ru/custom/qam_7)
+   same =&amp;gt; n,Hangup()
+
+;запись о неверном значении
+exten =&amp;gt; _[06-9],1,Playback(/var/lib/asterisk/sounds/ru/custom/qam_18)
+   same =&amp;gt; n,Goto(s,3)
+;опять же запись о неверном значении
+exten =&amp;gt; i,1,Playback(/var/lib/asterisk/sounds/ru/custom/qam_18)
+   same =&amp;gt; n,Goto(s,3)
+;благодарим за оценку и завершаем вызов
+exten =&amp;gt; hh,1,Playback(/var/lib/asterisk/sounds/ru/custom/qam-end,skip)
+    same =&amp;gt; n,Hangup()
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Добавить и файлы из контекста &lt;strong&gt;ivr-qam&lt;/strong&gt; для воспроизведения приветствия и ошибок при тайм-ауте и неверном вводе и также поправить им права.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Оценка качества обслуживания в Asterisk</title>
       <link>http://localhost:1313/articles/qam/</link>
