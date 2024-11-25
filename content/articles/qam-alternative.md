@@ -27,7 +27,7 @@ CREATE TABLE `service_survey` (
 ```
 [qam]
 writehandle=asteriskcdrdb
-writesql=INSERT INTO service_survey (`num`, `operator`, `queue`, `valuation`, `date`) VALUES ('${VAL1}', '${VAL2}', '${VAL3}', '${VAL4}', NOW())
+writesql=INSERT INTO service_survey (num,operator,queue,valuation,date) VALUES ('${ARG1}','${ARG2}','${ARG3}','${ARG4}',NOW())
 ```
 
 4. Клепаем само меню в */etc/asterisk/extensions_custom.conf*:
@@ -45,19 +45,19 @@ exten => s,1,Answer()
    same => n,Goto(t,1)
 
 exten => 1,1,NoOP(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 1)
-   same => n,ODBC_qam(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 1)
+   same => n,Set(ODBC_qam(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 1, ${COUNT})=)
    same => n,Goto(hh,1)
 
-exten => 2,1,ODBC_qam(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 2)
+exten => 2,1,Set(ODBC_qam(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 2, ${COUNT})=)
    same => n,Goto(hh,1)
 
-exten => 3,1,ODBC_qam(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 3)
+exten => 3,1,Set(ODBC_qam(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 3, ${COUNT})=)
    same => n,Goto(hh,1)
 
-exten => 4,1,ODBC_qam(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 4)
+exten => 4,1,Set(ODBC_qam(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 4, ${COUNT})=)
    same => n,Goto(hh,1)
 
-exten => 5,1,ODBC_qam(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 5)
+exten => 5,1,Set(ODBC_qam(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 5, ${COUNT})=)
    same => n,Goto(hh,1)
 
 ;запись о тайм-ауте получения ответа
