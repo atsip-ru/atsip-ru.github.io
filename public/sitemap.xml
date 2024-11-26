@@ -3,10 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2024-11-25T17:19:06+05:00</lastmod>
+    <lastmod>2024-11-26T11:01:43+05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/instructions/</loc>
-    <lastmod>2024-11-25T17:19:06+05:00</lastmod>
+    <lastmod>2024-11-26T11:01:43+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/instructions/multicast-paging-in-asterisk/</loc>
+    <lastmod>2024-11-26T11:01:43+05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/instructions/simple-example-of-how-agi-works/</loc>
     <lastmod>2024-11-25T17:19:06+05:00</lastmod>

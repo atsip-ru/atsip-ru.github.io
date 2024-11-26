@@ -11,8 +11,28 @@
     </image>
     <generator>Hugo -- 0.134.2</generator>
     <language>ru</language>
-    <lastBuildDate>Mon, 25 Nov 2024 17:19:06 +0500</lastBuildDate>
+    <lastBuildDate>Tue, 26 Nov 2024 11:01:43 +0500</lastBuildDate>
     <atom:link href="http://localhost:1313/instructions/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Multicast Paging в Asterisk</title>
+      <link>http://localhost:1313/instructions/multicast-paging-in-asterisk/</link>
+      <pubDate>Tue, 26 Nov 2024 11:01:43 +0500</pubDate>
+      <guid>http://localhost:1313/instructions/multicast-paging-in-asterisk/</guid>
+      <description>&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/multicast-paging.png&#34; alt=&#34;multicast-paging&#34;  /&gt;
+
+В настройках Yealink указываем как на скриншоте - адрес и порт, которые будет прослушивать телефон на наличие мультикаста.&lt;/p&gt;
+&lt;p&gt;В диалплан прописываем экстен для вызова пейджинга:&lt;/p&gt;
+&lt;p&gt;[ext-paging]
+exten =&amp;gt; *91,hint,Custom:PAGE91
+exten =&amp;gt; *91,1,NoOP(Multicast Paging)
+same =&amp;gt; n,Set(CONNECTEDLINE(name-charset,i)=utf8)
+same =&amp;gt; n,Set(CONNECTEDLINE(name,i)=Selector)
+same =&amp;gt; n,Set(CONNECTEDLINE(num,i)=*91)
+same =&amp;gt; n,Wait(1)
+same =&amp;gt; n,Page(MulticastRTP/basic/239.0.0.1:6061)
+same =&amp;gt; n,Hangup()&lt;/p&gt;
+&lt;p&gt;И теперь при вызове *91 на телефонах, у кого указаны подобные настройки, будет срабатывать пейджинг.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Простой пример работы AGI</title>
       <link>http://localhost:1313/instructions/simple-example-of-how-agi-works/</link>
