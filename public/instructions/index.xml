@@ -11,27 +11,40 @@
     </image>
     <generator>Hugo -- 0.134.2</generator>
     <language>ru</language>
-    <lastBuildDate>Tue, 26 Nov 2024 11:01:43 +0500</lastBuildDate>
+    <lastBuildDate>Tue, 26 Nov 2024 15:52:40 +0500</lastBuildDate>
     <atom:link href="http://localhost:1313/instructions/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Инструкция по восстановлению прошивки телефонов Yealink</title>
+      <link>http://localhost:1313/instructions/recovery-yealink/</link>
+      <pubDate>Tue, 26 Nov 2024 15:52:40 +0500</pubDate>
+      <guid>http://localhost:1313/instructions/recovery-yealink/</guid>
+      <description>&lt;h2 id=&#34;обзор&#34;&gt;Обзор&lt;/h2&gt;
+&lt;p&gt;В этом руководстве разъясняется, как использовать режим восстановления, чтобы подготовить телефон,
+когда он не запускается. IP-телефоны Yealink поддерживают режим восстановления только по протоколу TFTP.&lt;/p&gt;
+&lt;p&gt;Как правило, когда IP-телефон Yealink включен и подключен к сети должным образом, он успешно запустится
+и будет готов к использованию. В случае, если IP-телефон случайно выключен при обновлении, системные
+данные во флеш-памяти могут быть повреждены, и это делает IP-телефон незагружаемым. Поэтому мы
+настоятельно рекомендуем не отключать питание при обновлении прошивки или конфигурации телефона.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Multicast Paging в Asterisk</title>
       <link>http://localhost:1313/instructions/multicast-paging-in-asterisk/</link>
       <pubDate>Tue, 26 Nov 2024 11:01:43 +0500</pubDate>
       <guid>http://localhost:1313/instructions/multicast-paging-in-asterisk/</guid>
       <description>&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/multicast-paging.png&#34; alt=&#34;multicast-paging&#34;  /&gt;
-
-В настройках Yealink указываем как на скриншоте - адрес и порт, которые будет прослушивать телефон на наличие мультикаста.&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;В настройках Yealink указываем как на скриншоте - адрес и порт, которые будет прослушивать телефон на наличие мультикаста.&lt;/p&gt;
 &lt;p&gt;В диалплан прописываем экстен для вызова пейджинга:&lt;/p&gt;
-&lt;p&gt;[ext-paging]
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[ext-paging]
 exten =&amp;gt; *91,hint,Custom:PAGE91
 exten =&amp;gt; *91,1,NoOP(Multicast Paging)
-same =&amp;gt; n,Set(CONNECTEDLINE(name-charset,i)=utf8)
-same =&amp;gt; n,Set(CONNECTEDLINE(name,i)=Selector)
-same =&amp;gt; n,Set(CONNECTEDLINE(num,i)=*91)
-same =&amp;gt; n,Wait(1)
-same =&amp;gt; n,Page(MulticastRTP/basic/239.0.0.1:6061)
-same =&amp;gt; n,Hangup()&lt;/p&gt;
-&lt;p&gt;И теперь при вызове *91 на телефонах, у кого указаны подобные настройки, будет срабатывать пейджинг.&lt;/p&gt;</description>
+    same =&amp;gt; n,Set(CONNECTEDLINE(name-charset,i)=utf8)
+    same =&amp;gt; n,Set(CONNECTEDLINE(name,i)=Selector)
+    same =&amp;gt; n,Set(CONNECTEDLINE(num,i)=*91)
+    same =&amp;gt; n,Wait(1)
+    same =&amp;gt; n,Page(MulticastRTP/basic/239.0.0.1:6061)
+    same =&amp;gt; n,Hangup()
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;И теперь при вызове &lt;strong&gt;*91&lt;/strong&gt; на телефонах, у кого указаны подобные настройки, будет срабатывать пейджинг.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Простой пример работы AGI</title>

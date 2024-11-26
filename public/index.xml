@@ -11,8 +11,21 @@
     </image>
     <generator>Hugo -- 0.134.2</generator>
     <language>ru</language>
-    <lastBuildDate>Tue, 26 Nov 2024 11:01:43 +0500</lastBuildDate>
+    <lastBuildDate>Tue, 26 Nov 2024 15:52:40 +0500</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Инструкция по восстановлению прошивки телефонов Yealink</title>
+      <link>http://localhost:1313/instructions/recovery-yealink/</link>
+      <pubDate>Tue, 26 Nov 2024 15:52:40 +0500</pubDate>
+      <guid>http://localhost:1313/instructions/recovery-yealink/</guid>
+      <description>&lt;h2 id=&#34;обзор&#34;&gt;Обзор&lt;/h2&gt;
+&lt;p&gt;В этом руководстве разъясняется, как использовать режим восстановления, чтобы подготовить телефон,
+когда он не запускается. IP-телефоны Yealink поддерживают режим восстановления только по протоколу TFTP.&lt;/p&gt;
+&lt;p&gt;Как правило, когда IP-телефон Yealink включен и подключен к сети должным образом, он успешно запустится
+и будет готов к использованию. В случае, если IP-телефон случайно выключен при обновлении, системные
+данные во флеш-памяти могут быть повреждены, и это делает IP-телефон незагружаемым. Поэтому мы
+настоятельно рекомендуем не отключать питание при обновлении прошивки или конфигурации телефона.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Multicast Paging в Asterisk</title>
       <link>http://localhost:1313/instructions/multicast-paging-in-asterisk/</link>
