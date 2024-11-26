@@ -1,5 +1,5 @@
 baseURL: "https://atsip-ru.github.io/"
-title: "AtSIP"
+title: "atsip.ru - телефонные решения на базе АТС Asterisk"
 languageCode: "ru"
 pagination.pagerSize: 3
 theme: "PaperMod"
