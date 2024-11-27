@@ -47,7 +47,7 @@ params:
   assets:
     # disableHLJS: true # to disable highlight.js
     # disableFingerprinting: true
-    favicon: "/favicon/favicon.ico"
+    favicon: "/favicon/favicon.svg"
     favicon16x16: "/favicon/favicon-16x16.png"
     favicon32x32: "/favicon/favicon-32x32.png"
     apple_touch_icon: "/favicon/apple-touch-icon.png"
@@ -63,14 +63,14 @@ params:
     enabled: false # needs to be explicitly set
     title: AtSIP
     subtitle: "Телефонные решения на базе АТС Asterisk"
-    imageUrl: "<img location>"
+    imageUrl: "/logo.png"
     imageWidth: 120
     imageHeight: 120
     imageTitle: my image
     buttons:
-      - name: Posts
+      - name: Посты
         url: posts
-      - name: Tags
+      - name: Теги
         url: tags
 
   # home-info mode
