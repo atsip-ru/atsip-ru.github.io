@@ -1,8 +1,10 @@
-+++
-title = 'Оценка качества обслуживания в Asterisk'
-date = 2024-11-22T12:51:44+05:00
-draft = false
-+++
+---
+title: 'Оценка качества обслуживания в Asterisk'
+date: 2024-11-22T12:51:44+05:00
+draft: false
+author: 'Dmitriy Q'
+tags: [freepbx, asterisk, queues, custom, agi]
+---
 
 Поступил заказ сделать модуль оценки работы оператора и качества оказания услуги.
 

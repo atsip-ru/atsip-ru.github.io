@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Instructions on AtSIP</title>
+    <title>Instructions on atsip.ru - телефонные решения на базе АТС Asterisk</title>
     <link>http://localhost:1313/instructions/</link>
-    <description>Recent content in Instructions on AtSIP</description>
+    <description>Recent content in Instructions on atsip.ru - телефонные решения на базе АТС Asterisk</description>
     <image>
-      <title>AtSIP</title>
+      <title>atsip.ru - телефонные решения на базе АТС Asterisk</title>
       <url>http://localhost:1313/logo.png</url>
       <link>http://localhost:1313/logo.png</link>
     </image>

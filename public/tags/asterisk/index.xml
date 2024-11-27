@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Asterisk on atsip.ru - телефонные решения на базе АТС Asterisk</title>
+    <link>http://localhost:1313/tags/asterisk/</link>
+    <description>Recent content in Asterisk on atsip.ru - телефонные решения на базе АТС Asterisk</description>
+    <image>
+      <title>atsip.ru - телефонные решения на базе АТС Asterisk</title>
+      <url>http://localhost:1313/logo.png</url>
+      <link>http://localhost:1313/logo.png</link>
+    </image>
+    <generator>Hugo -- 0.134.2</generator>
+    <language>ru</language>
+    <lastBuildDate>Tue, 26 Nov 2024 11:01:43 +0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/asterisk/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Multicast Paging в Asterisk</title>
+      <link>http://localhost:1313/instructions/multicast-paging-in-asterisk/</link>
+      <pubDate>Tue, 26 Nov 2024 11:01:43 +0500</pubDate>
+      <guid>http://localhost:1313/instructions/multicast-paging-in-asterisk/</guid>
+      <description>&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/multicast-paging.png&#34; alt=&#34;multicast-paging&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;В настройках Yealink указываем как на скриншоте - адрес и порт, которые будет прослушивать телефон на наличие мультикаста.&lt;/p&gt;
+&lt;p&gt;В диалплан прописываем экстен для вызова пейджинга:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[ext-paging]
+exten =&amp;gt; *91,hint,Custom:PAGE91
+exten =&amp;gt; *91,1,NoOP(Multicast Paging)
+    same =&amp;gt; n,Set(CONNECTEDLINE(name-charset,i)=utf8)
+    same =&amp;gt; n,Set(CONNECTEDLINE(name,i)=Selector)
+    same =&amp;gt; n,Set(CONNECTEDLINE(num,i)=*91)
+    same =&amp;gt; n,Wait(1)
+    same =&amp;gt; n,Page(MulticastRTP/basic/239.0.0.1:6061)
+    same =&amp;gt; n,Hangup()
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;И теперь при вызове &lt;strong&gt;*91&lt;/strong&gt; на телефонах, у кого указаны подобные настройки, будет срабатывать пейджинг.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Простой пример работы AGI</title>
+      <link>http://localhost:1313/instructions/simple-example-of-how-agi-works/</link>
+      <pubDate>Mon, 25 Nov 2024 17:19:06 +0500</pubDate>
+      <guid>http://localhost:1313/instructions/simple-example-of-how-agi-works/</guid>
+      <description>&lt;p&gt;Рассмотрим работу AGI на примере скрипта:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#!/usr/bin/php7.3 -q
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;?&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;php&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;phpagi.php&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$AGI&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;AGI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$filepath&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;/var/www/html/statistic.local/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;//Путь к файлу
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$filedb&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$AGI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;agi_arg_1&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;      &lt;span class=&#34;c1&#34;&gt;//Имя файла с базой
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$ls&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$AGI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;agi_arg_2&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;          &lt;span class=&#34;c1&#34;&gt;//Лицевой счет абонента
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$fullfile&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$filepath&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$filedb&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$arr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$fullfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;foreach&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$arr&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;strpos&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$ls&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!==&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nv&#34;&gt;$string&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nv&#34;&gt;$ls_array&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;explode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;|&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$ls&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$ls_array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]){&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nv&#34;&gt;$dolg&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$ls_array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$summa&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;explode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;.&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$dolg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$summa_rub&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$summa&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$summa_kop&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$summa&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$summa_rub&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$sound_r&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;rouble&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;elseif&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;in_array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$summa_rub&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])){&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$sound_r&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;roublya&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;elseif&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;in_array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$summa_rub&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])){&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$sound_r&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;roubley&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$summa_kop&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$sound_k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;copeck&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;elseif&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;in_array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$summa_kop&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])){&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$sound_k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;copeck-i&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;elseif&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;in_array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$summa_kop&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])){&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$sound_k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;copecks&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$AGI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;set_variable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;DOLG&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$dolg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$AGI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;set_variable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;DOLG_R&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$summa&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$AGI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;set_variable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;DOLG_K&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$summa&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$AGI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;set_variable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;sound_r&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$sound_r&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$AGI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;set_variable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;sound_k&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$sound_k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;?&amp;gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Вызывается из диалплана:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Оценка качества обслуживания в Asterisk (альтернатива)</title>
+      <link>http://localhost:1313/articles/qam-alternative/</link>
+      <pubDate>Mon, 25 Nov 2024 13:08:32 +0500</pubDate>
+      <guid>http://localhost:1313/articles/qam-alternative/</guid>
+      <description>&lt;p&gt;Альтернативное решение для оценки качества (на примере 200 очереди).&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;В файл &lt;em&gt;/etc/asterisk/queues_post_custom.conf&lt;/em&gt; вносим редакцию для 200 очереди чтобы получить номер ответившего агента (можно и проще, но не срабатывало с IAX):&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[200](+)
+setinterfacevar=yes
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Создаем таблицу &lt;code&gt;service_survey&lt;/code&gt; в БД &lt;code&gt;asteriskcdrdb&lt;/code&gt; для значений:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;CREATE TABLE `service_survey` (
+  `num` varchar(20) DEFAULT NULL,
+  `operator` varchar(20) DEFAULT NULL,
+  `queue` varchar(20) DEFAULT NULL,
+  `valuation` varchar(20) DEFAULT NULL,
+  `date` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;В &lt;em&gt;func_odbc.conf&lt;/em&gt; добавляем функцию записи в базу:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[qam]
+writehandle=asteriskcdrdb
+writesql=INSERT INTO service_survey (num,operator,queue,valuation,date) VALUES (&amp;#39;${ARG1}&amp;#39;,&amp;#39;${ARG2}&amp;#39;,&amp;#39;${ARG3}&amp;#39;,&amp;#39;${ARG4}&amp;#39;,NOW())
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Клепаем само меню в &lt;em&gt;/etc/asterisk/extensions_custom.conf&lt;/em&gt;:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[ivr-qam]
+exten =&amp;gt; s,1,Answer()
+   same =&amp;gt; n,Wait(1)
+   same =&amp;gt; n,Set(TIMEOUT(digit)=1)
+   same =&amp;gt; n,Set(QUEUEAGENT=${CUT(CUT(MEMBERINTERFACE,@,1),/,2)})
+   same =&amp;gt; n,NoOP(Answered Agent: ${QUEUEAGENT})
+   ;запись с просьбой оценить качество предоставленной услуги
+   same =&amp;gt; n,Background(/var/lib/asterisk/sounds/ru/custom/qam-question-service,m)
+   ;Ожидание оценки - 5 секунд, хотя вводить можно уже во время голосового приветствия
+   same =&amp;gt; n,WaitExten(5)
+   same =&amp;gt; n,Goto(t,1)
+
+exten =&amp;gt; 1,1,NoOP(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 1)
+   same =&amp;gt; n,Set(ODBC_qam(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 1, ${COUNT})=)
+   same =&amp;gt; n,Goto(hh,1)
+
+exten =&amp;gt; 2,1,Set(ODBC_qam(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 2, ${COUNT})=)
+   same =&amp;gt; n,Goto(hh,1)
+
+exten =&amp;gt; 3,1,Set(ODBC_qam(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 3, ${COUNT})=)
+   same =&amp;gt; n,Goto(hh,1)
+
+exten =&amp;gt; 4,1,Set(ODBC_qam(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 4, ${COUNT})=)
+   same =&amp;gt; n,Goto(hh,1)
+
+exten =&amp;gt; 5,1,Set(ODBC_qam(${CDR(src)}, ${QUEUEAGENT}, ${QUEUENUM}, 5, ${COUNT})=)
+   same =&amp;gt; n,Goto(hh,1)
+
+;запись о тайм-ауте получения ответа
+exten =&amp;gt; t,1,Playback(/var/lib/asterisk/sounds/ru/custom/qam_7)
+   same =&amp;gt; n,Hangup()
+
+;запись о неверном значении
+exten =&amp;gt; _[06-9],1,Playback(/var/lib/asterisk/sounds/ru/custom/qam_18)
+   same =&amp;gt; n,Goto(s,3)
+;опять же запись о неверном значении
+exten =&amp;gt; i,1,Playback(/var/lib/asterisk/sounds/ru/custom/qam_18)
+   same =&amp;gt; n,Goto(s,3)
+;благодарим за оценку и завершаем вызов
+exten =&amp;gt; hh,1,Playback(/var/lib/asterisk/sounds/ru/custom/qam-end,skip)
+    same =&amp;gt; n,Hangup()
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Добавить и файлы из контекста &lt;strong&gt;ivr-qam&lt;/strong&gt; для воспроизведения приветствия и ошибок при тайм-ауте и неверном вводе и также поправить им права.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Оценка качества обслуживания в Asterisk</title>
+      <link>http://localhost:1313/articles/qam/</link>
+      <pubDate>Fri, 22 Nov 2024 12:51:44 +0500</pubDate>
+      <guid>http://localhost:1313/articles/qam/</guid>
+      <description>&lt;p&gt;Поступил заказ сделать модуль оценки работы оператора и качества оказания услуги.&lt;/p&gt;
+&lt;p&gt;За основу взял статью &lt;a href=&#34;https://dzen.ru/a/W_ZfFFGEzACpkDVw&#34;&gt;merion networks&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Всё делалось на FreePBX 15 и Asterisk 18.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;В файл /etc/asterisk/queues_post_custom.conf вносим редакцию для нужной очереди (например 500) чтобы получить номер ответившего агента (можно и проще, но не срабатывало с IAX):&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[500](+)
+setinterfacevar=yes
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Клепаем само меню в /etc/asterisk/extensions_custom.conf:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[assessment]
+exten =&amp;gt; _X.,1,Answer()
+     same =&amp;gt; n,Set(CHANNEL(language)=ru)
+     same =&amp;gt; n,Set(COUNT=1)
+     same =&amp;gt; n,Wait(1)
+     same =&amp;gt; n,Playback(custom/qam-intro)
+     same =&amp;gt; n,Set(TIMEOUT(digit)=1)
+     same =&amp;gt; n,NoOP(Count: ${COUNT})
+     same =&amp;gt; n,GotoIf($[&amp;#34;${COUNT}&amp;#34; = &amp;#34;1&amp;#34;]?start-1)
+     same =&amp;gt; n,GotoIf($[&amp;#34;${COUNT}&amp;#34; = &amp;#34;2&amp;#34;]?start-2:hh,1)
+     same =&amp;gt; n(start-1),Background(custom/qam-question-service,m)       ;озвучиваем предложение об оценке оператора
+     same =&amp;gt; n,WaitExten(10)
+     same =&amp;gt; n,Goto(t,1)        ;переход к завершению по тайм-ауту
+     same =&amp;gt; n(start-2),Background(custom/qam-question-operator,m)      ;озвучиваем предложение об оценке сервиса
+     same =&amp;gt; n,WaitExten(10)
+     same =&amp;gt; n,Goto(t,1)        ;переход к завершению по тайм-ауту
+
+exten =&amp;gt; 1,1,NoOP(${CDR(src)}, ${DIALEDPEERNUMBER}, ${NODEST}, 1, ${COUNT})
+   same =&amp;gt; n,AGI(survey.php, ${CDR(src)}, ${DIALEDPEERNUMBER}, ${NODEST}, 1, ${COUNT})  ;если клиент вводит 1, то отправляем даные через AGI в скрипт, который отправляет их в SQL
+   same =&amp;gt; n,Set(COUNT=$[${COUNT} + 1])
+   same =&amp;gt; n,Goto(_X.,6)
+
+exten =&amp;gt; 2,1,AGI(survey.php, ${CDR(src)}, ${DIALEDPEERNUMBER}, ${NODEST}, 2, ${COUNT})
+   same =&amp;gt; n,Set(COUNT=$[${COUNT} + 1])
+   same =&amp;gt; n,Goto(_X.,6)
+
+exten =&amp;gt; 3,1,AGI(survey.php, ${CDR(src)}, ${DIALEDPEERNUMBER}, ${NODEST}, 3, ${COUNT})
+   same =&amp;gt; n,Set(COUNT=$[${COUNT} + 1])
+   same =&amp;gt; n,Goto(_X.,6)
+
+exten =&amp;gt; 4,1,AGI(survey.php, ${CDR(src)}, ${DIALEDPEERNUMBER}, ${NODEST}, 4, ${COUNT})
+   same =&amp;gt; n,Set(COUNT=$[${COUNT} + 1])
+   same =&amp;gt; n,Goto(_X.,6)
+
+exten =&amp;gt; 5,1,AGI(survey.php, ${CDR(src)}, ${DIALEDPEERNUMBER}, ${NODEST}, 5, ${COUNT})
+   same =&amp;gt; n,Set(COUNT=$[${COUNT} + 1])
+   same =&amp;gt; n,Goto(_X.,6)
+
+exten =&amp;gt; t,1,Playback(custom/zapis_7)
+   same =&amp;gt; n,Hangup()
+
+exten =&amp;gt; _[06-9],1,Playback(custom/zapis_18)
+         same =&amp;gt; n,Goto(_X.,7)
+exten =&amp;gt; i,1,Playback(custom/zapis_18)
+   same =&amp;gt; n,Goto(_X.,7)
+
+exten =&amp;gt; hh,1,Playback(custom/qam-end,skip)
+    same =&amp;gt; n,Hangup()
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Добавить скрипт для обработки и отправки данных в БД /var/lib/asterisk/agi-bin/survey.php
+Назначить ему права на исполнение и сменить пользователя/группу на asterisk.
+Добавить и файлы из контекста ivr-qam для воспроизведения приветствия и ошибок при тайм-ауте и неверном вводе и также поправить им права.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Обзор возможностей Asterisk</title>
+      <link>http://localhost:1313/instructions/asterisk-features-overview/</link>
+      <pubDate>Wed, 13 Nov 2024 16:47:48 +0500</pubDate>
+      <guid>http://localhost:1313/instructions/asterisk-features-overview/</guid>
+      <description>&lt;h2 id=&#34;внутренние-номера&#34;&gt;Внутренние номера&lt;/h2&gt;
+&lt;p&gt;Внутренние номера в Asterisk могут быть 3-х, 4-х и более значными, могут быть и двух, но двухзначными принято делать коды функций, хоть они как правило и начинаются с символа *.&lt;/p&gt;
+&lt;p&gt;Каждому номеру возможно задать описание с дополнительной информацией — будь то должность человека или его Фамилия и Имя.&lt;/p&gt;
+&lt;p&gt;Естественно каждому номеру необходим пароль.&lt;/p&gt;
+&lt;p&gt;Так же имеется возможность распределять номерам имеющиеся внешние исходящие номера.&lt;/p&gt;
+&lt;p&gt;Начиная с 13 версии появилась возможность мультирегистрации для внутренних номеров — это значит что под одним внутренним номером может быть зарегистрировано несколько устройств: настольный телефон и софтфон на смартфоне например.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Модуль детализации звонков</title>
+      <link>http://localhost:1313/instructions/calls-detailed-module/</link>
+      <pubDate>Wed, 13 Nov 2024 16:26:51 +0500</pubDate>
+      <guid>http://localhost:1313/instructions/calls-detailed-module/</guid>
+      <description>&lt;p&gt;Выглядит он так:&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/lu124487hgtwh_tmp_f40dca94.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Задается множество фильтров по различным параметрам, без фильтров покажет все вызовы начиная с самых последних:
+&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/lu124487hgtwh_tmp_417c6b7a.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;При наличии значка &lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/lu124487hgtwh_tmp_956dff7f.png&#34; alt=&#34;&#34;  /&gt;
+ возможно прослушать или скачать запись кликнув по соответствующей кнопке.&lt;/p&gt;
+&lt;p&gt;Возможна фильтрация по содержащимся цифрам в номере:
+&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/lu124487hgtwh_tmp_d29584df.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Причем фильтрация возможна по содержанию цифр внутри номера, в начале или конце и с использованием инверсии «&lt;strong&gt;Не&lt;/strong&gt;».
+&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/lu124487hgtwh_tmp_ed171e9a.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;При включении «Дополнительных фильтров» возможна фильтрация по входящему номеру (DID)
+&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/lu124487hgtwh_tmp_cfa48ff.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Работа с CLI Asterisk</title>
+      <link>http://localhost:1313/instructions/asterisk-cli/</link>
+      <pubDate>Sat, 02 Nov 2024 15:10:21 +0500</pubDate>
+      <guid>http://localhost:1313/instructions/asterisk-cli/</guid>
+      <description>&lt;p&gt;CLI (Command Line Interface) - очень полезный инструмент диагностики и отладки при работе с Asterisk.
+Войти в него можно командой &lt;code&gt;asterisk -rvv&lt;/code&gt; (или &lt;code&gt;sudo asterisk -rvv&lt;/code&gt;), где количество &lt;code&gt;v&lt;/code&gt; (verbose) означает детальность вывода, а &lt;code&gt;r&lt;/code&gt; подключение к Asterisk.
+&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/7d9e0cd304f7622a74cef7eb2f41e130.png&#34; alt=&#34;7d9e0cd304f7622a74cef7eb2f41e130.png&#34;  /&gt;
+
+При этом отобразится пользователь, от которого запущен Asterisk, его версия, имя машины, на которой запущено приложение и pid процесса.
+&lt;code&gt;*CLI&amp;gt;&lt;/code&gt; означает интерактивный режим работы в CLI Asterisk.
+Список всех &lt;strong&gt;доступных&lt;/strong&gt; для Вашего Asterisk команд можно узнать командой &lt;code&gt;core show help&lt;/code&gt;.
+В Asterisk также отлично работает автодополнение команд, т.е. введя например &lt;code&gt;core show&lt;/code&gt; и нажав клавишу Tab оно предложит все доступные варианты:
+&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/d89cfd64504d754c64e789e35b8936a5.png&#34; alt=&#34;d89cfd64504d754c64e789e35b8936a5.png&#34;  /&gt;
+
+Ещё одна удобная функция CLI - &lt;code&gt;like&lt;/code&gt;, тоесть поиск возможных вариантов среди всех доступных, например:
+&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/8717af5c9825cdbd75a593f41b137529.png&#34; alt=&#34;8717af5c9825cdbd75a593f41b137529.png&#34;  /&gt;
+
+для &lt;code&gt;like&lt;/code&gt; даже доступны базовые регулярные выражения, такие как якори и диапазоны:
+&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/screenshot-2024-11-02-15-11-38.png&#34; alt=&#34;Снимок экрана от 2024-11-02 15-11-38&#34;  /&gt;
+&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Задание определенного направления (выход через конкретный транк)</title>
+      <link>http://localhost:1313/articles/specifying-a-specific-direction/</link>
+      <pubDate>Sat, 02 Nov 2024 14:38:41 +0500</pubDate>
+      <guid>http://localhost:1313/articles/specifying-a-specific-direction/</guid>
+      <description>&lt;p&gt;Для начала создаем нужный нам маршрут: &lt;strong&gt;Подключения → Исходящая маршрутизация&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/6d792aa70fd0b7d7f644c884205cf8cc.png&#34; alt=&#34;6d792aa70fd0b7d7f644c884205cf8cc.png&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Задаем произвольно описание, необходимый нам CallerID и транк, через который будет передаваться вызов с этим CallerID (если транк с регистрацией и допустим только один CallerID, то можно указать «&lt;strong&gt;Форсировать использование транкового CID (Force Trunk CID) в настройках транка&lt;/strong&gt;»)&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/bf2ae29dc9e282da384bee12fe2a4e07.png&#34; alt=&#34;bf2ae29dc9e282da384bee12fe2a4e07.png&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Задаем необходимые (допустимые) нам шаблоны набора номеров:&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/0494b10004354ef8df2036731a4db6b8.png&#34; alt=&#34;0494b10004354ef8df2036731a4db6b8.png&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Можете включить запись вызова:&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/68dfc868664b4fe78ecf2c70c1df736e.png&#34; alt=&#34;68dfc868664b4fe78ecf2c70c1df736e.png&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;После этого обязательно &lt;strong&gt;Сохраняем&lt;/strong&gt; и &lt;strong&gt;Применяем изменения.&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

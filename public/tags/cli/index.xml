@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Cli on atsip.ru - телефонные решения на базе АТС Asterisk</title>
+    <link>http://localhost:1313/tags/cli/</link>
+    <description>Recent content in Cli on atsip.ru - телефонные решения на базе АТС Asterisk</description>
+    <image>
+      <title>atsip.ru - телефонные решения на базе АТС Asterisk</title>
+      <url>http://localhost:1313/logo.png</url>
+      <link>http://localhost:1313/logo.png</link>
+    </image>
+    <generator>Hugo -- 0.134.2</generator>
+    <language>ru</language>
+    <lastBuildDate>Sat, 02 Nov 2024 15:10:21 +0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/cli/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Работа с CLI Asterisk</title>
+      <link>http://localhost:1313/instructions/asterisk-cli/</link>
+      <pubDate>Sat, 02 Nov 2024 15:10:21 +0500</pubDate>
+      <guid>http://localhost:1313/instructions/asterisk-cli/</guid>
+      <description>&lt;p&gt;CLI (Command Line Interface) - очень полезный инструмент диагностики и отладки при работе с Asterisk.
+Войти в него можно командой &lt;code&gt;asterisk -rvv&lt;/code&gt; (или &lt;code&gt;sudo asterisk -rvv&lt;/code&gt;), где количество &lt;code&gt;v&lt;/code&gt; (verbose) означает детальность вывода, а &lt;code&gt;r&lt;/code&gt; подключение к Asterisk.
+&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/7d9e0cd304f7622a74cef7eb2f41e130.png&#34; alt=&#34;7d9e0cd304f7622a74cef7eb2f41e130.png&#34;  /&gt;
+
+При этом отобразится пользователь, от которого запущен Asterisk, его версия, имя машины, на которой запущено приложение и pid процесса.
+&lt;code&gt;*CLI&amp;gt;&lt;/code&gt; означает интерактивный режим работы в CLI Asterisk.
+Список всех &lt;strong&gt;доступных&lt;/strong&gt; для Вашего Asterisk команд можно узнать командой &lt;code&gt;core show help&lt;/code&gt;.
+В Asterisk также отлично работает автодополнение команд, т.е. введя например &lt;code&gt;core show&lt;/code&gt; и нажав клавишу Tab оно предложит все доступные варианты:
+&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/d89cfd64504d754c64e789e35b8936a5.png&#34; alt=&#34;d89cfd64504d754c64e789e35b8936a5.png&#34;  /&gt;
+
+Ещё одна удобная функция CLI - &lt;code&gt;like&lt;/code&gt;, тоесть поиск возможных вариантов среди всех доступных, например:
+&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/8717af5c9825cdbd75a593f41b137529.png&#34; alt=&#34;8717af5c9825cdbd75a593f41b137529.png&#34;  /&gt;
+
+для &lt;code&gt;like&lt;/code&gt; даже доступны базовые регулярные выражения, такие как якори и диапазоны:
+&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/screenshot-2024-11-02-15-11-38.png&#34; alt=&#34;Снимок экрана от 2024-11-02 15-11-38&#34;  /&gt;
+&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

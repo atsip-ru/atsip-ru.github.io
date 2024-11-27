@@ -1,9 +1,10 @@
-+++
-title = 'Модуль детализации звонков'
-date = 2024-11-13T16:26:51+05:00
-draft = false
-author = 'Dmitriy Q'
-+++
+---
+title: 'Модуль детализации звонков'
+date: 2024-11-13T16:26:51+05:00
+draft: false
+author: 'Dmitriy Q'
+tags: [cdr, asterisk]
+---
 
 Выглядит он так:
 

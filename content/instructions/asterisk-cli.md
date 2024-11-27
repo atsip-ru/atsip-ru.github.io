@@ -1,9 +1,10 @@
-+++
-title = 'Работа с CLI Asterisk'
-date = 2024-11-02T15:10:21+05:00
-author = 'Dmitriy Q'
-draft = false
-+++
+---
+title: 'Работа с CLI Asterisk'
+date: 2024-11-02T15:10:21+05:00
+author: 'Dmitriy Q'
+draft: false
+tags: [cli, asterisk]
+---
 CLI (Command Line Interface) - очень полезный инструмент диагностики и отладки при работе с Asterisk.
 Войти в него можно командой `asterisk -rvv` (или `sudo asterisk -rvv`), где количество `v` (verbose) означает детальность вывода, а `r` подключение к Asterisk.
 ![7d9e0cd304f7622a74cef7eb2f41e130.png](/_resources/7d9e0cd304f7622a74cef7eb2f41e130.png)

@@ -1,8 +1,9 @@
-+++
-title = 'Multicast Paging в Asterisk'
-date = 2024-11-26T11:01:43+05:00
-draft = true
-+++
+---
+title: 'Multicast Paging в Asterisk'
+date: 2024-11-26T11:01:43+05:00
+draft: false
+tags: [paging, asterisk, multicast]
+---
 
 ![multicast-paging](/_resources/multicast-paging.png)
 

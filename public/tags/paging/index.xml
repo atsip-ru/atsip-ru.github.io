@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Paging on atsip.ru - телефонные решения на базе АТС Asterisk</title>
+    <link>http://localhost:1313/tags/paging/</link>
+    <description>Recent content in Paging on atsip.ru - телефонные решения на базе АТС Asterisk</description>
+    <image>
+      <title>atsip.ru - телефонные решения на базе АТС Asterisk</title>
+      <url>http://localhost:1313/logo.png</url>
+      <link>http://localhost:1313/logo.png</link>
+    </image>
+    <generator>Hugo -- 0.134.2</generator>
+    <language>ru</language>
+    <lastBuildDate>Tue, 26 Nov 2024 11:01:43 +0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/paging/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Multicast Paging в Asterisk</title>
+      <link>http://localhost:1313/instructions/multicast-paging-in-asterisk/</link>
+      <pubDate>Tue, 26 Nov 2024 11:01:43 +0500</pubDate>
+      <guid>http://localhost:1313/instructions/multicast-paging-in-asterisk/</guid>
+      <description>&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/multicast-paging.png&#34; alt=&#34;multicast-paging&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;В настройках Yealink указываем как на скриншоте - адрес и порт, которые будет прослушивать телефон на наличие мультикаста.&lt;/p&gt;
+&lt;p&gt;В диалплан прописываем экстен для вызова пейджинга:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[ext-paging]
+exten =&amp;gt; *91,hint,Custom:PAGE91
+exten =&amp;gt; *91,1,NoOP(Multicast Paging)
+    same =&amp;gt; n,Set(CONNECTEDLINE(name-charset,i)=utf8)
+    same =&amp;gt; n,Set(CONNECTEDLINE(name,i)=Selector)
+    same =&amp;gt; n,Set(CONNECTEDLINE(num,i)=*91)
+    same =&amp;gt; n,Wait(1)
+    same =&amp;gt; n,Page(MulticastRTP/basic/239.0.0.1:6061)
+    same =&amp;gt; n,Hangup()
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;И теперь при вызове &lt;strong&gt;*91&lt;/strong&gt; на телефонах, у кого указаны подобные настройки, будет срабатывать пейджинг.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

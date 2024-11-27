@@ -62,7 +62,7 @@ params:
   profileMode:
     enabled: false # needs to be explicitly set
     title: AtSIP
-    subtitle: "IP-telephony Asterisk-based"
+    subtitle: "Телефонные решения на базе АТС Asterisk"
     imageUrl: "<img location>"
     imageWidth: 120
     imageHeight: 120
@@ -132,10 +132,10 @@ menu:
       name: О нас
       url: /about/
       weight: 30
-#    - identifier: phone
-#      name: +79058994494
-#      url: +79058994494
-#      weight: 40
+    - identifier: tags
+      name: Теги
+      url: /tags/
+      weight: 40
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
 markup:
