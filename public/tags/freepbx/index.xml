@@ -9,10 +9,34 @@
       <url>http://localhost:1313/logo.png</url>
       <link>http://localhost:1313/logo.png</link>
     </image>
-    <generator>Hugo -- 0.134.2</generator>
+    <generator>Hugo -- 0.139.4</generator>
     <language>ru</language>
-    <lastBuildDate>Mon, 25 Nov 2024 13:08:32 +0500</lastBuildDate>
+    <lastBuildDate>Wed, 18 Dec 2024 17:32:23 +0500</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/freepbx/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Дневник сборки дистрибутива</title>
+      <link>http://localhost:1313/articles/distribution-build-diary/</link>
+      <pubDate>Wed, 18 Dec 2024 17:32:23 +0500</pubDate>
+      <guid>http://localhost:1313/articles/distribution-build-diary/</guid>
+      <description>&lt;p&gt;Решил немного &amp;ldquo;интерактивить&amp;rdquo; и писать что-то вроде дневника по решению ошибок и добавлению функций в скрипт сборки.&lt;/p&gt;
+&lt;p&gt;Скрипт собирает текущий релиз 20 версии Asterisk и 16 версии FreePBX.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/atsip-ru/pbx-3-public&#34;&gt;Публичный репозитарий&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/orgs/atsip-ru/projects/2&#34;&gt;Проект разработки&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Известные текущие ошибки на 18.12.2024:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Не отрабатывает функция установки CDR Viewer MOD&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Исправления:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Вероятно поправлена ошибка с выбором русского языка в веб-интерфейсе FreePBX.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Добавил мелкие исправления синтаксиса для функции &lt;code&gt;install_cdr()&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Запуск тестовой сборки на виртуалке.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Оценка качества обслуживания в Asterisk (альтернатива)</title>
       <link>http://localhost:1313/articles/qam-alternative/</link>
