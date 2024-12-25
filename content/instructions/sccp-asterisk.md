@@ -21,12 +21,12 @@ tags: [sccp, cisco, asterisk]
 
 **Сохранить (Submit)**.
 
-![image1](_resources/sccp_1.png)
+![image1](/_resources/sccp_1.png)
 
 Далее перемещаемся в консоль и будем исправлять файлы `sccp_extensions.conf` и `sccp_hardware.conf` в папке `/etc/asterisk/`
 Добавляем в `sccp_extensions.conf`
 
-![image2](_resources/sccp_2.png)
+![image2](/_resources/sccp_2.png)
 
 ```
 [2134](defaultline)
@@ -40,7 +40,7 @@ trnsfvm = 2134
 ```
 Теперь лучше зайти на сам аппарат.
 
-![image3](_resources/sccp_3.png)
+![image3](/_resources/sccp_3.png)
 
 Отсюда нам надо взять модель аппарата — **7905** и **Host Name**.
 Host Name – это по сути MAC-адрес с добавлением вначале *SEP*.
@@ -53,7 +53,7 @@ description = *** Anna
 button = line, 2134
 ```
 
-![image4](_resources/sccp_4.png)
+![image4](/_resources/sccp_4.png)
 
 **Обязательно нужно убедиться что больше это Host Name больше нигде не используется!**
 
@@ -69,7 +69,7 @@ button = line, 2134
 
 `~ $ sudo asterisk -rx 'sccp show devices'`
 
-![image5](_resources/sccp_5.png)
+![image5](/_resources/sccp_5.png)
 
 *Небольшое примечание: нежелательно оставлять поля в кофигах пустыми — это касается полей «description» и «cid_name» лучше заполнить группой из 8 точек.*
 
