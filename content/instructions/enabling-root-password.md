@@ -5,6 +5,7 @@ author: 'Dmitriy Q'
 draft: false
 tags: [linux, ubuntu, ssh]
 ---
+
 После установки Ubuntu понадобилось мне дать удаленный доступ по паролю.
 Быстро нагуглил что нужно в конфиге sshd (etc/ssh/sshd_config) раскомментировать поле
 с `PermitRootLogin yes`, хорошо, делаю, перезагружаю sshd - не пускает, PuTTY ругается что
@@ -24,3 +25,6 @@ PermitRootLogin yes
 PasswordAuthentication yes
 KbdInteractiveAuthentication yes
 ```
+
+Но отмечу - ставьте при этом сложные трудноподбираемые пароли или лучше пользуйтесь входом
+по ключам.
