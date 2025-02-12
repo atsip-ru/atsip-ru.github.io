@@ -10,9 +10,9 @@ tags: [yealink, web]
 
 Заходим в веб-интерфейс телефона:
 
-![Yealink](_resources/yealink-set-password.png)
+![Yealink](/_resources/yealink-set-password.png)
 
-*Settings* -> *Configuration* и там пункт *Import CFG Configuration File*.
+**Settings** -> **Configuration** и там пункт **Import CFG Configuration File**.
 Создаем файл с любым именем, но содержание должно быть таким:
 
 ```
@@ -29,5 +29,5 @@ security.user_password = user:qwerty
 Он задает русский язык для интерфейса телефона и его веб-интерефейса и перебивает пароли юзера и
 админа на `qwerty`.
 
-НО! На прошивках от IPMatika как правило такая возможность закрыта и пункт *Import CFG Configuration File* отсутствует.
+НО! На прошивках от IPMatika как правило такая возможность закрыта и пункт **Import CFG Configuration File** отсутствует.
 Но если он в наличии - значит лазейка есть и стоит ей воспользоваться.
