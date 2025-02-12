@@ -9,10 +9,94 @@
       <url>http://localhost:1313/logo.png</url>
       <link>http://localhost:1313/logo.png</link>
     </image>
-    <generator>Hugo -- 0.139.4</generator>
+    <generator>Hugo -- 0.142.0</generator>
     <language>ru</language>
-    <lastBuildDate>Wed, 25 Dec 2024 09:55:51 +0500</lastBuildDate>
+    <lastBuildDate>Wed, 12 Feb 2025 16:07:06 +0500</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Web</title>
+      <link>http://localhost:1313/tags/web/</link>
+      <pubDate>Wed, 12 Feb 2025 16:07:06 +0500</pubDate>
+      <guid>http://localhost:1313/tags/web/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Yealink</title>
+      <link>http://localhost:1313/tags/yealink/</link>
+      <pubDate>Wed, 12 Feb 2025 16:07:06 +0500</pubDate>
+      <guid>http://localhost:1313/tags/yealink/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>http://localhost:1313/tags/linux/</link>
+      <pubDate>Thu, 16 Jan 2025 16:02:38 +0500</pubDate>
+      <guid>http://localhost:1313/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ssh</title>
+      <link>http://localhost:1313/tags/ssh/</link>
+      <pubDate>Thu, 16 Jan 2025 16:02:38 +0500</pubDate>
+      <guid>http://localhost:1313/tags/ssh/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ubuntu</title>
+      <link>http://localhost:1313/tags/ubuntu/</link>
+      <pubDate>Thu, 16 Jan 2025 16:02:38 +0500</pubDate>
+      <guid>http://localhost:1313/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Journalctl</title>
+      <link>http://localhost:1313/tags/journalctl/</link>
+      <pubDate>Thu, 26 Dec 2024 17:27:01 +0500</pubDate>
+      <guid>http://localhost:1313/tags/journalctl/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linuxformat</title>
+      <link>http://localhost:1313/tags/linuxformat/</link>
+      <pubDate>Thu, 26 Dec 2024 17:27:01 +0500</pubDate>
+      <guid>http://localhost:1313/tags/linuxformat/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Stderr</title>
+      <link>http://localhost:1313/tags/stderr/</link>
+      <pubDate>Thu, 26 Dec 2024 17:27:01 +0500</pubDate>
+      <guid>http://localhost:1313/tags/stderr/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Translate</title>
+      <link>http://localhost:1313/tags/translate/</link>
+      <pubDate>Thu, 26 Dec 2024 17:27:01 +0500</pubDate>
+      <guid>http://localhost:1313/tags/translate/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Safeeyes</title>
+      <link>http://localhost:1313/tags/safeeyes/</link>
+      <pubDate>Thu, 26 Dec 2024 09:25:52 +0500</pubDate>
+      <guid>http://localhost:1313/tags/safeeyes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Utilites</title>
+      <link>http://localhost:1313/tags/utilites/</link>
+      <pubDate>Thu, 26 Dec 2024 09:25:52 +0500</pubDate>
+      <guid>http://localhost:1313/tags/utilites/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Symlink</title>
+      <link>http://localhost:1313/tags/symlink/</link>
+      <pubDate>Wed, 25 Dec 2024 16:31:39 +0500</pubDate>
+      <guid>http://localhost:1313/tags/symlink/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Asterisk</title>
       <link>http://localhost:1313/tags/asterisk/</link>
@@ -53,13 +137,6 @@
       <link>http://localhost:1313/tags/recovery/</link>
       <pubDate>Tue, 26 Nov 2024 15:52:40 +0500</pubDate>
       <guid>http://localhost:1313/tags/recovery/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Yealink</title>
-      <link>http://localhost:1313/tags/yealink/</link>
-      <pubDate>Tue, 26 Nov 2024 15:52:40 +0500</pubDate>
-      <guid>http://localhost:1313/tags/yealink/</guid>
       <description></description>
     </item>
     <item>

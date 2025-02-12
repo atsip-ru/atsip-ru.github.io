@@ -9,7 +9,7 @@
       <url>http://localhost:1313/logo.png</url>
       <link>http://localhost:1313/logo.png</link>
     </image>
-    <generator>Hugo -- 0.139.4</generator>
+    <generator>Hugo -- 0.142.0</generator>
     <language>ru</language>
     <lastBuildDate>Wed, 25 Dec 2024 09:55:51 +0500</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/cisco/index.xml" rel="self" type="application/rss+xml" />
@@ -18,16 +18,25 @@
       <link>http://localhost:1313/instructions/sccp-asterisk/</link>
       <pubDate>Wed, 25 Dec 2024 09:55:51 +0500</pubDate>
       <guid>http://localhost:1313/instructions/sccp-asterisk/</guid>
-      <description>&lt;h1 id=&#34;настройка-аппаратов-для-cisco-в-asterisk&#34;&gt;Настройка аппаратов для Cisco в Asterisk.&lt;/h1&gt;
-&lt;p&gt;В настройках &lt;em&gt;FreePBX&lt;/em&gt; → &lt;em&gt;Extensions&lt;/em&gt; → &lt;em&gt;Add Estension&lt;/em&gt; → &lt;em&gt;Другое устройство&lt;/em&gt; → &lt;em&gt;Сохранить&lt;/em&gt;
-&lt;em&gt;Внутренний номер пользователя&lt;/em&gt; — номер, который нам требуется создать, у нас &lt;em&gt;2134&lt;/em&gt;
-&lt;em&gt;Отображаемое имя&lt;/em&gt; — имя, например «***** Anna».
-&lt;em&gt;Псевдоним номера ИД&lt;/em&gt; — не трогаем
-&lt;em&gt;Псевдоним SIP&lt;/em&gt; → номер что мы вводили во внутреннем номере - &lt;em&gt;2134&lt;/em&gt;
-Прокручиваем страничку ниже
-&lt;em&gt;Устройство использует custom технологию&lt;/em&gt;
-&lt;em&gt;dial&lt;/em&gt; → &lt;code&gt;SCCP/2134&lt;/code&gt;
-&lt;em&gt;Сохранить (Submit)&lt;/em&gt;.&lt;/p&gt;
+      <description>&lt;p&gt;В настройках &lt;strong&gt;FreePBX&lt;/strong&gt; → &lt;strong&gt;Extensions&lt;/strong&gt; → &lt;strong&gt;Add Estension&lt;/strong&gt; → &lt;strong&gt;Другое устройство&lt;/strong&gt; → &lt;strong&gt;Сохранить&lt;/strong&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Внутренний номер пользователя&lt;/strong&gt; — номер, который нам требуется создать, у нас &lt;strong&gt;2134&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Отображаемое имя&lt;/strong&gt; — имя, например «***** Anna»;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Псевдоним номера ИД&lt;/strong&gt; — не трогаем;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Псевдоним SIP&lt;/strong&gt; → номер что мы вводили во внутреннем номере - &lt;strong&gt;2134&lt;/strong&gt;;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Прокручиваем страничку ниже&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Устройство использует custom технологию&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;dial&lt;/strong&gt; → &lt;code&gt;SCCP/2134&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Сохранить (Submit)&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/sccp_1.png&#34; alt=&#34;image1&#34;  /&gt;
+&lt;/p&gt;
 &lt;p&gt;Далее перемещаемся в консоль и будем исправлять файлы &lt;code&gt;sccp_extensions.conf&lt;/code&gt; и &lt;code&gt;sccp_hardware.conf&lt;/code&gt; в папке &lt;code&gt;/etc/asterisk/&lt;/code&gt;
 Добавляем в &lt;code&gt;sccp_extensions.conf&lt;/code&gt;&lt;/p&gt;</description>
     </item>

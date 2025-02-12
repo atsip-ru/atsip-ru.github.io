@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ubuntu on atsip.ru - телефонные решения на базе АТС Asterisk</title>
+    <link>http://localhost:1313/tags/ubuntu/</link>
+    <description>Recent content in Ubuntu on atsip.ru - телефонные решения на базе АТС Asterisk</description>
+    <image>
+      <title>atsip.ru - телефонные решения на базе АТС Asterisk</title>
+      <url>http://localhost:1313/logo.png</url>
+      <link>http://localhost:1313/logo.png</link>
+    </image>
+    <generator>Hugo -- 0.142.0</generator>
+    <language>ru</language>
+    <lastBuildDate>Thu, 16 Jan 2025 16:02:38 +0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Включение удаленного входа по паролю для root</title>
+      <link>http://localhost:1313/instructions/enabling-root-password/</link>
+      <pubDate>Thu, 16 Jan 2025 16:02:38 +0500</pubDate>
+      <guid>http://localhost:1313/instructions/enabling-root-password/</guid>
+      <description>&lt;p&gt;После установки Ubuntu понадобилось мне дать удаленный доступ по паролю.
+Быстро нагуглил что нужно в конфиге sshd (etc/ssh/sshd_config) раскомментировать поле
+с &lt;code&gt;PermitRootLogin yes&lt;/code&gt;, хорошо, делаю, перезагружаю sshd - не пускает, PuTTY ругается что
+вход возможен только по pubkey.&lt;/p&gt;
+&lt;p&gt;Ищу ещё - нашёл что нужен ещё &lt;code&gt;PasswordAuthentication yes&lt;/code&gt;, делаю, перезагружаю sshd, но
+всё равно не работает!&lt;/p&gt;
+&lt;p&gt;Путём долгого поиска выясняется что нужен параметр challenge-response, который сейчас
+включается параметром &lt;code&gt;KbdInteractiveAuthentication yes&lt;/code&gt;. Перезагружаю sshd и наконец PuTTY
+запросил пароль после ввода логина.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

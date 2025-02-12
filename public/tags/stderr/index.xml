@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Stderr on atsip.ru - телефонные решения на базе АТС Asterisk</title>
+    <link>http://localhost:1313/tags/stderr/</link>
+    <description>Recent content in Stderr on atsip.ru - телефонные решения на базе АТС Asterisk</description>
+    <image>
+      <title>atsip.ru - телефонные решения на базе АТС Asterisk</title>
+      <url>http://localhost:1313/logo.png</url>
+      <link>http://localhost:1313/logo.png</link>
+    </image>
+    <generator>Hugo -- 0.142.0</generator>
+    <language>ru</language>
+    <lastBuildDate>Thu, 26 Dec 2024 17:27:01 +0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/stderr/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Краткое руководство по... захвату ошибок</title>
+      <link>http://localhost:1313/articles/quick-reference-error-capture/</link>
+      <pubDate>Thu, 26 Dec 2024 17:27:01 +0500</pubDate>
+      <guid>http://localhost:1313/articles/quick-reference-error-capture/</guid>
+      <description>&lt;p&gt;Самое сложное в решении проблем с компьютерами - определить, в чем заключается проблема.
+Когда вы просите помощи на форуме или просто обращаетесь к профессору Google, очень важно приводить точные сообщения
+об ошибках. Если вы запускаете программу из терминала, то их можно увидеть, скопировать и вставить, но что делать,
+если вы не можете их увидеть или там слишком много информации?&lt;/p&gt;
+&lt;p&gt;Вы можете скопировать вывод программы в файл следующим образом:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ someprogram 2&amp;gt;&amp;amp;1&amp;gt;file.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Есть два канала вывода, стандартный вывод и стандартный вывод ошибок - &lt;code&gt;&amp;gt;file.txt&lt;/code&gt; отправляет stdout в этот файл,
+а &lt;code&gt;2&amp;gt;&amp;amp;1&lt;/code&gt; перенаправляет сообщения об ошибках в stdout.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

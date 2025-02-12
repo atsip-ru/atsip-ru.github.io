@@ -2,29 +2,80 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/tags/asterisk/</loc>
-    <lastmod>2024-12-25T09:55:51+05:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/</loc>
+    <lastmod>2025-02-12T16:07:06+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/instructions/</loc>
+    <lastmod>2025-02-12T16:07:06+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-02-12T16:07:06+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/web/</loc>
+    <lastmod>2025-02-12T16:07:06+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/yealink/</loc>
+    <lastmod>2025-02-12T16:07:06+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/instructions/set-password-admin/</loc>
+    <lastmod>2025-02-12T16:07:06+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/linux/</loc>
+    <lastmod>2025-01-16T16:02:38+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/ssh/</loc>
+    <lastmod>2025-01-16T16:02:38+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/ubuntu/</loc>
+    <lastmod>2025-01-16T16:02:38+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/instructions/enabling-root-password/</loc>
+    <lastmod>2025-01-16T16:02:38+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/articles/</loc>
+    <lastmod>2024-12-26T17:27:01+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/journalctl/</loc>
+    <lastmod>2024-12-26T17:27:01+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/linuxformat/</loc>
+    <lastmod>2024-12-26T17:27:01+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/stderr/</loc>
+    <lastmod>2024-12-26T17:27:01+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/translate/</loc>
+    <lastmod>2024-12-26T17:27:01+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/articles/quick-reference-error-capture/</loc>
+    <lastmod>2024-12-26T17:27:01+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/safeeyes/</loc>
+    <lastmod>2024-12-26T09:25:52+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/utilites/</loc>
+    <lastmod>2024-12-26T09:25:52+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/articles/eye-strain-prevention-with-safeeyes/</loc>
+    <lastmod>2024-12-26T09:25:52+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/symlink/</loc>
+    <lastmod>2024-12-25T16:31:39+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/articles/quick-reference-file-links/</loc>
+    <lastmod>2024-12-25T16:31:39+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/asterisk/</loc>
     <lastmod>2024-12-25T09:55:51+05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/cisco/</loc>
     <lastmod>2024-12-25T09:55:51+05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/instructions/</loc>
-    <lastmod>2024-12-25T09:55:51+05:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/sccp/</loc>
-    <lastmod>2024-12-25T09:55:51+05:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2024-12-25T09:55:51+05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/instructions/sccp-asterisk/</loc>
     <lastmod>2024-12-25T09:55:51+05:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/articles/</loc>
-    <lastmod>2024-12-18T17:32:23+05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/freepbx/</loc>
     <lastmod>2024-12-18T17:32:23+05:00</lastmod>
@@ -36,9 +87,6 @@
     <lastmod>2024-12-18T17:32:23+05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/recovery/</loc>
-    <lastmod>2024-11-26T15:52:40+05:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/yealink/</loc>
     <lastmod>2024-11-26T15:52:40+05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/instructions/recovery-yealink/</loc>

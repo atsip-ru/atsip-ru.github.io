@@ -9,7 +9,7 @@
       <url>http://localhost:1313/logo.png</url>
       <link>http://localhost:1313/logo.png</link>
     </image>
-    <generator>Hugo -- 0.139.4</generator>
+    <generator>Hugo -- 0.142.0</generator>
     <language>ru</language>
     <lastBuildDate>Wed, 18 Dec 2024 17:32:23 +0500</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/freepbx/index.xml" rel="self" type="application/rss+xml" />
@@ -22,20 +22,16 @@
 &lt;p&gt;Скрипт собирает текущий релиз 20 версии Asterisk и 16 версии FreePBX.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/atsip-ru/pbx-3-public&#34;&gt;Публичный репозитарий&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/orgs/atsip-ru/projects/2&#34;&gt;Проект разработки&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Известные текущие ошибки на 18.12.2024:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Не отрабатывает функция установки CDR Viewer MOD&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Исправления:&lt;/p&gt;
+&lt;h2 id=&#34;19122024&#34;&gt;19.12.2024&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Вероятно поправлена ошибка с выбором русского языка в веб-интерфейсе FreePBX.&lt;/p&gt;
+&lt;p&gt;Исправлена ошибка установки CDR Viewer MOD - были лишние пробелы после &lt;code&gt;EOF&lt;/code&gt; в предыдущей функции и исправил ошибку с
+незапросом пароля для пользователя.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Добавил мелкие исправления синтаксиса для функции &lt;code&gt;install_cdr()&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Запуск тестовой сборки на виртуалке.&lt;/p&gt;</description>
+&lt;p&gt;Начал писать веб-оболочку для редактирования пользователей - добавление в &lt;code&gt;.htpasswd&lt;/code&gt; работает, теперь надо продумать
+как добавлять пользователей и в конфиг CDR Viewer MOD. Отображает хорошо. Ну и продумать как получать имя пользователя
+для его редактирования или удаления.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Оценка качества обслуживания в Asterisk (альтернатива)</title>

@@ -9,25 +9,72 @@
       <url>http://localhost:1313/logo.png</url>
       <link>http://localhost:1313/logo.png</link>
     </image>
-    <generator>Hugo -- 0.139.4</generator>
+    <generator>Hugo -- 0.142.0</generator>
     <language>ru</language>
-    <lastBuildDate>Wed, 25 Dec 2024 09:55:51 +0500</lastBuildDate>
+    <lastBuildDate>Wed, 12 Feb 2025 16:07:06 +0500</lastBuildDate>
     <atom:link href="http://localhost:1313/instructions/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Установка админского пароля на Yealink</title>
+      <link>http://localhost:1313/instructions/set-password-admin/</link>
+      <pubDate>Wed, 12 Feb 2025 16:07:06 +0500</pubDate>
+      <guid>http://localhost:1313/instructions/set-password-admin/</guid>
+      <description>&lt;p&gt;Итак, расскажу про способ смены админского пароля на телефонах Yealink при имеющемся доступе под
+пользователем user через веб-интерфейс.&lt;/p&gt;
+&lt;p&gt;Заходим в веб-интерфейс телефона:&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;_resources/yealink-set-password.png&#34; alt=&#34;Yealink&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Settings&lt;/em&gt; -&amp;gt; &lt;em&gt;Configuration&lt;/em&gt; и там пункт &lt;em&gt;Import CFG Configuration File&lt;/em&gt;.
+Создаем файл с любым именем, но содержание должно быть таким:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#!version:1.0.0.1
+
+### This file is the exported MAC-all.cfg.
+lang.gui = Russian
+lang.wui = Russian
+### For security, the following parameters with password haven&amp;#39;t been display in this file.
+security.user_password = admin:qwerty
+security.user_password = user:qwerty
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Он задает русский язык для интерфейса телефона и его веб-интерефейса и перебивает пароли юзера и
+админа на &lt;code&gt;qwerty&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Включение удаленного входа по паролю для root</title>
+      <link>http://localhost:1313/instructions/enabling-root-password/</link>
+      <pubDate>Thu, 16 Jan 2025 16:02:38 +0500</pubDate>
+      <guid>http://localhost:1313/instructions/enabling-root-password/</guid>
+      <description>&lt;p&gt;После установки Ubuntu понадобилось мне дать удаленный доступ по паролю.
+Быстро нагуглил что нужно в конфиге sshd (etc/ssh/sshd_config) раскомментировать поле
+с &lt;code&gt;PermitRootLogin yes&lt;/code&gt;, хорошо, делаю, перезагружаю sshd - не пускает, PuTTY ругается что
+вход возможен только по pubkey.&lt;/p&gt;
+&lt;p&gt;Ищу ещё - нашёл что нужен ещё &lt;code&gt;PasswordAuthentication yes&lt;/code&gt;, делаю, перезагружаю sshd, но
+всё равно не работает!&lt;/p&gt;
+&lt;p&gt;Путём долгого поиска выясняется что нужен параметр challenge-response, который сейчас
+включается параметром &lt;code&gt;KbdInteractiveAuthentication yes&lt;/code&gt;. Перезагружаю sshd и наконец PuTTY
+запросил пароль после ввода логина.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Настройка телефонов SCCP (Cisco) Asterisk</title>
       <link>http://localhost:1313/instructions/sccp-asterisk/</link>
       <pubDate>Wed, 25 Dec 2024 09:55:51 +0500</pubDate>
       <guid>http://localhost:1313/instructions/sccp-asterisk/</guid>
-      <description>&lt;h1 id=&#34;настройка-аппаратов-для-cisco-в-asterisk&#34;&gt;Настройка аппаратов для Cisco в Asterisk.&lt;/h1&gt;
-&lt;p&gt;В настройках &lt;em&gt;FreePBX&lt;/em&gt; → &lt;em&gt;Extensions&lt;/em&gt; → &lt;em&gt;Add Estension&lt;/em&gt; → &lt;em&gt;Другое устройство&lt;/em&gt; → &lt;em&gt;Сохранить&lt;/em&gt;
-&lt;em&gt;Внутренний номер пользователя&lt;/em&gt; — номер, который нам требуется создать, у нас &lt;em&gt;2134&lt;/em&gt;
-&lt;em&gt;Отображаемое имя&lt;/em&gt; — имя, например «***** Anna».
-&lt;em&gt;Псевдоним номера ИД&lt;/em&gt; — не трогаем
-&lt;em&gt;Псевдоним SIP&lt;/em&gt; → номер что мы вводили во внутреннем номере - &lt;em&gt;2134&lt;/em&gt;
-Прокручиваем страничку ниже
-&lt;em&gt;Устройство использует custom технологию&lt;/em&gt;
-&lt;em&gt;dial&lt;/em&gt; → &lt;code&gt;SCCP/2134&lt;/code&gt;
-&lt;em&gt;Сохранить (Submit)&lt;/em&gt;.&lt;/p&gt;
+      <description>&lt;p&gt;В настройках &lt;strong&gt;FreePBX&lt;/strong&gt; → &lt;strong&gt;Extensions&lt;/strong&gt; → &lt;strong&gt;Add Estension&lt;/strong&gt; → &lt;strong&gt;Другое устройство&lt;/strong&gt; → &lt;strong&gt;Сохранить&lt;/strong&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Внутренний номер пользователя&lt;/strong&gt; — номер, который нам требуется создать, у нас &lt;strong&gt;2134&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Отображаемое имя&lt;/strong&gt; — имя, например «***** Anna»;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Псевдоним номера ИД&lt;/strong&gt; — не трогаем;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Псевдоним SIP&lt;/strong&gt; → номер что мы вводили во внутреннем номере - &lt;strong&gt;2134&lt;/strong&gt;;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Прокручиваем страничку ниже&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Устройство использует custom технологию&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;dial&lt;/strong&gt; → &lt;code&gt;SCCP/2134&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Сохранить (Submit)&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/sccp_1.png&#34; alt=&#34;image1&#34;  /&gt;
+&lt;/p&gt;
 &lt;p&gt;Далее перемещаемся в консоль и будем исправлять файлы &lt;code&gt;sccp_extensions.conf&lt;/code&gt; и &lt;code&gt;sccp_hardware.conf&lt;/code&gt; в папке &lt;code&gt;/etc/asterisk/&lt;/code&gt;
 Добавляем в &lt;code&gt;sccp_extensions.conf&lt;/code&gt;&lt;/p&gt;</description>
     </item>
