@@ -9,7 +9,7 @@ tags: [freepbx, asterisk, custom, inbound, routes]
 решил сделать умную маршрутизацию чтобы вызовы клиентов направлять на звонивших им операторов,
 в том числе полезно учитывая множество переадресаций на сотовые в компании.
 
-Решил зайдествовать func_odbc - добавляем в файл /etc/asterisk/func_odbc.conf:
+Решил зайдествовать func_odbc - добавляем в файл */etc/asterisk/func_odbc.conf*:
 
 ```
 ; это уже должно быть там
@@ -25,7 +25,7 @@ syntax=${CALLERID(number):-10}
 readsql=SELECT cnum FROM cdr WHERE dst like '%${ARG1}' ORDER BY calldate DESC LIMIT 1
 ```
 
-Добавляем в /etc/asterisk/extensions_custom.conf:
+Добавляем в */etc/asterisk/extensions_custom.conf*:
 
 ```
 [smart-forwarding]
@@ -44,8 +44,9 @@ exten => s,1,NoOP(smart forwarding to the reception from ${CALLERID(number)})
 соединяем, не находим - соединяем с секретарем (у меня группа 060, для внутреннего 100
  будет `ext-local,100,1`).
 
-Теперь во FreePBX выбираем *Admin* -> *Custom Destinations* и добавляем:
+Теперь во FreePBX выбираем **Admin** -> **Custom Destinations** и добавляем:
 
-![smart forwarding](/_resource/smart-forwarding.png)
+![smart_forwarding](/_resources/smart-forwarding.png)
 
-И теперь в нужном IVR по тайм-ауту выбираем созданный *smart forwarding*.
+И теперь в нужном IVR по тайм-ауту выбираем созданный **smart forwarding**.
+Ну и конечно же всё применить - это пересоздаст диалплан и перечитает его.
