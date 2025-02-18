@@ -9,7 +9,7 @@
       <url>http://localhost:1313/logo.png</url>
       <link>http://localhost:1313/logo.png</link>
     </image>
-    <generator>Hugo -- 0.142.0</generator>
+    <generator>Hugo -- 0.143.1</generator>
     <language>ru</language>
     <lastBuildDate>Thu, 26 Dec 2024 17:27:01 +0500</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/stderr/index.xml" rel="self" type="application/rss+xml" />

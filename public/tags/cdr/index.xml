@@ -9,7 +9,7 @@
       <url>http://localhost:1313/logo.png</url>
       <link>http://localhost:1313/logo.png</link>
     </image>
-    <generator>Hugo -- 0.142.0</generator>
+    <generator>Hugo -- 0.143.1</generator>
     <language>ru</language>
     <lastBuildDate>Wed, 13 Nov 2024 16:26:51 +0500</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/cdr/index.xml" rel="self" type="application/rss+xml" />

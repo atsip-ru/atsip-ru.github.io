@@ -2,13 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2025-02-12T16:07:06+05:00</lastmod>
+    <loc>http://localhost:1313/articles/</loc>
+    <lastmod>2025-02-18T12:02:50+05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/instructions/</loc>
-    <lastmod>2025-02-12T16:07:06+05:00</lastmod>
+    <loc>http://localhost:1313/tags/asterisk/</loc>
+    <lastmod>2025-02-18T12:02:50+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2025-02-18T12:02:50+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/custom/</loc>
+    <lastmod>2025-02-18T12:02:50+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/freepbx/</loc>
+    <lastmod>2025-02-18T12:02:50+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/inbound/</loc>
+    <lastmod>2025-02-18T12:02:50+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/routes/</loc>
+    <lastmod>2025-02-18T12:02:50+05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-02-18T12:02:50+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/articles/smart-forwarding/</loc>
+    <lastmod>2025-02-18T12:02:50+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/instructions/</loc>
     <lastmod>2025-02-12T16:07:06+05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/web/</loc>
@@ -31,9 +52,6 @@
   </url><url>
     <loc>http://localhost:1313/instructions/enabling-root-password/</loc>
     <lastmod>2025-01-16T16:02:38+05:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/articles/</loc>
-    <lastmod>2024-12-26T17:27:01+05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/journalctl/</loc>
     <lastmod>2024-12-26T17:27:01+05:00</lastmod>
@@ -65,9 +83,6 @@
     <loc>http://localhost:1313/articles/quick-reference-file-links/</loc>
     <lastmod>2024-12-25T16:31:39+05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/asterisk/</loc>
-    <lastmod>2024-12-25T09:55:51+05:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/cisco/</loc>
     <lastmod>2024-12-25T09:55:51+05:00</lastmod>
   </url><url>
@@ -76,9 +91,6 @@
   </url><url>
     <loc>http://localhost:1313/instructions/sccp-asterisk/</loc>
     <lastmod>2024-12-25T09:55:51+05:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/freepbx/</loc>
-    <lastmod>2024-12-18T17:32:23+05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/modules/</loc>
     <lastmod>2024-12-18T17:32:23+05:00</lastmod>
@@ -109,9 +121,6 @@
   </url><url>
     <loc>http://localhost:1313/instructions/simple-example-of-how-agi-works/</loc>
     <lastmod>2024-11-25T17:19:06+05:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/custom/</loc>
-    <lastmod>2024-11-25T13:08:32+05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/func_odbc/</loc>
     <lastmod>2024-11-25T13:08:32+05:00</lastmod>
@@ -144,9 +153,6 @@
     <lastmod>2024-11-02T15:10:21+05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/outbound/</loc>
-    <lastmod>2024-11-02T14:38:41+05:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/routes/</loc>
     <lastmod>2024-11-02T14:38:41+05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/articles/specifying-a-specific-direction/</loc>

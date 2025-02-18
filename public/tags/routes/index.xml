@@ -9,10 +9,32 @@
       <url>http://localhost:1313/logo.png</url>
       <link>http://localhost:1313/logo.png</link>
     </image>
-    <generator>Hugo -- 0.142.0</generator>
+    <generator>Hugo -- 0.143.1</generator>
     <language>ru</language>
-    <lastBuildDate>Sat, 02 Nov 2024 14:38:41 +0500</lastBuildDate>
+    <lastBuildDate>Tue, 18 Feb 2025 12:02:50 +0500</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/routes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Умная маршрутизация вызовов</title>
+      <link>http://localhost:1313/articles/smart-forwarding/</link>
+      <pubDate>Tue, 18 Feb 2025 12:02:50 +0500</pubDate>
+      <guid>http://localhost:1313/articles/smart-forwarding/</guid>
+      <description>&lt;p&gt;Чтобы разгрузить секретаря, на которого валится множество вызовов с голосового меню
+решил сделать умную маршрутизацию чтобы вызовы клиентов направлять на звонивших им операторов,
+в том числе полезно учитывая множество переадресаций на сотовые в компании.&lt;/p&gt;
+&lt;p&gt;Решил зайдествовать func_odbc - добавляем в файл /etc/asterisk/func_odbc.conf:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;; это уже должно быть там
+[general]
+dsn=asteriskcdrdb
+prefix=ODBC
+
+;а это наша функция
+[MOBILE]
+writehandle=asteriskcdrdb
+synopsis=The function searches for the extension that last dialed this number.
+syntax=${CALLERID(number):-10}
+readsql=SELECT cnum FROM cdr WHERE dst like &amp;#39;%${ARG1}&amp;#39; ORDER BY calldate DESC LIMIT 1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Добавляем в /etc/asterisk/extensions_custom.conf:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Задание определенного направления (выход через конкретный транк)</title>
       <link>http://localhost:1313/articles/specifying-a-specific-direction/</link>

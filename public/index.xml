@@ -9,10 +9,32 @@
       <url>http://localhost:1313/logo.png</url>
       <link>http://localhost:1313/logo.png</link>
     </image>
-    <generator>Hugo -- 0.142.0</generator>
+    <generator>Hugo -- 0.143.1</generator>
     <language>ru</language>
-    <lastBuildDate>Wed, 12 Feb 2025 16:07:06 +0500</lastBuildDate>
+    <lastBuildDate>Tue, 18 Feb 2025 12:02:50 +0500</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Умная маршрутизация вызовов</title>
+      <link>http://localhost:1313/articles/smart-forwarding/</link>
+      <pubDate>Tue, 18 Feb 2025 12:02:50 +0500</pubDate>
+      <guid>http://localhost:1313/articles/smart-forwarding/</guid>
+      <description>&lt;p&gt;Чтобы разгрузить секретаря, на которого валится множество вызовов с голосового меню
+решил сделать умную маршрутизацию чтобы вызовы клиентов направлять на звонивших им операторов,
+в том числе полезно учитывая множество переадресаций на сотовые в компании.&lt;/p&gt;
+&lt;p&gt;Решил зайдествовать func_odbc - добавляем в файл /etc/asterisk/func_odbc.conf:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;; это уже должно быть там
+[general]
+dsn=asteriskcdrdb
+prefix=ODBC
+
+;а это наша функция
+[MOBILE]
+writehandle=asteriskcdrdb
+synopsis=The function searches for the extension that last dialed this number.
+syntax=${CALLERID(number):-10}
+readsql=SELECT cnum FROM cdr WHERE dst like &amp;#39;%${ARG1}&amp;#39; ORDER BY calldate DESC LIMIT 1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Добавляем в /etc/asterisk/extensions_custom.conf:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Установка админского пароля на Yealink</title>
       <link>http://localhost:1313/instructions/set-password-admin/</link>
@@ -21,9 +43,9 @@
       <description>&lt;p&gt;Итак, расскажу про способ смены админского пароля на телефонах Yealink при имеющемся доступе под
 пользователем user через веб-интерфейс.&lt;/p&gt;
 &lt;p&gt;Заходим в веб-интерфейс телефона:&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;_resources/yealink-set-password.png&#34; alt=&#34;Yealink&#34;  /&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/_resources/yealink-set-password.png&#34; alt=&#34;Yealink&#34;  /&gt;
 &lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Settings&lt;/em&gt; -&amp;gt; &lt;em&gt;Configuration&lt;/em&gt; и там пункт &lt;em&gt;Import CFG Configuration File&lt;/em&gt;.
+&lt;p&gt;&lt;strong&gt;Settings&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Configuration&lt;/strong&gt; и там пункт &lt;strong&gt;Import CFG Configuration File&lt;/strong&gt;.
 Создаем файл с любым именем, но содержание должно быть таким:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#!version:1.0.0.1
 
