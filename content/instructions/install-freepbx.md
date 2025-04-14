@@ -1,7 +1,7 @@
 ---
 title: 'Установка Freepbx из скрипта'
 date: 2025-04-14T09:06:57+05:00
-draft: true
+draft: false
 author: 'Dmitriy Q'
 tags: [freepbx, asterisk, script, install]
 ---
