@@ -34,31 +34,31 @@ customize
 
 Лишнее можно закомментировать перед запуском скрипта.
 
-`preinstall` - обновляет систему до свежего состояния и устанавливает некоторые полезные приложения
+* `preinstall` - обновляет систему до свежего состояния и устанавливает некоторые полезные приложения
 
-`install_dahdi` и `install_libpri` - устанавливают DAHDI от Parabel и библиотеку libpri
+* `install_dahdi` и `install_libpri` - устанавливают DAHDI от Parabel и библиотеку libpri
 
-`install_asterisk` - собирает Asterisk из исходников, при этом в начале скрипта можно выбрать править menuselect (выбирает компоненты для сборки) или нет
+* `install_asterisk` - собирает Asterisk из исходников, при этом в начале скрипта можно выбрать править menuselect (выбирает компоненты для сборки) или нет
 
-`install_apache_php` устанавливает апач и PHP 7.4
+* `install_apache_php` устанавливает апач и PHP 7.4
 
-`install_mariadb_con` - устанавливает MariaDB и коннектор к ней, при этом поправляет настройки для ODBC
+* `install_mariadb_con` - устанавливает MariaDB и коннектор к ней, при этом поправляет настройки для ODBC
 
-`install_nodejs` - установка NodeJS (необходима для FreePBX)
+* `install_nodejs` - установка NodeJS (необходима для FreePBX)
 
-`install_freepbx` - собственно установка FreePBX 16
+* `install_freepbx` - собственно установка FreePBX 16
 
-`install_cdr` - установка [Asterisk CDR Viewer Mod](https://github.com/atsip-ru/Asterisk-CDR-Viewer-Mod)
+* `install_cdr` - установка [Asterisk CDR Viewer Mod](https://github.com/atsip-ru/Asterisk-CDR-Viewer-Mod)
 
-`set_firewall` - преднастройка iptables - разрешается локальная сеть и DNS Яндекса 77.88.8.8 77.88.8.1
+* `set_firewall` - преднастройка iptables - разрешается локальная сеть и DNS Яндекса 77.88.8.8 77.88.8.1
 
-`set_rinetd` - преднастройка rinetd для ограничения работы 30 минутами
+* `set_rinetd` - преднастройка rinetd для ограничения работы 30 минутами
 
-`set_tftp` - преднастраивается TFTPD
+* `set_tftp` - преднастраивается TFTPD
 
-`inst_scripts` - преднастройка MOTD, скриптов автоудаления голосовой почты и записей вызовов (180 дней) и ротации логов Asterisk
+* `inst_scripts` - преднастройка MOTD, скриптов автоудаления голосовой почты и записей вызовов (180 дней) и ротации логов Asterisk
 
-`customize` - преднастройки вроде длины генерируемого пароля, часового пояса и более лучшей локализации веб-интерфейса
+* `customize` - преднастройки вроде длины генерируемого пароля, часового пояса и более лучшей локализации веб-интерфейса
 
 ## Установка
 
@@ -66,7 +66,7 @@ customize
 
 `git clone https://github.com/atsip-ru/pbx-3-public.git` или
 
-`wget https://github.com/atsip-ru/pbx-3-public/archive/refs/heads/main.zip && unzip master.zip`
+`wget https://github.com/atsip-ru/pbx-3-public/archive/refs/heads/main.zip -O pbx-3-public.zip && unzip pbx-3-public.zip && mv pbx-3-public-main pbx-3-public`
 
 * переместить в каталог root
 
