@@ -3,9 +3,11 @@ title: 'Использование PJSIP_DIAL_CONTACTS в Asterisk'
 date: 2025-06-09T15:07:26+05:00
 draft: false
 author: 'Dmitriy Q'
-tags: [asterisk, pjsip]
+tags: [asterisk, pjsip, перевод]
 
 ---
+
+[Перевод статьи Using PJSIP_DIAL_CONTACTS in Asterisk](https://rdit.com/user-guides/using-pjsip-dial-contacts-in-asterisk/)
 
 ## 1. Введение
 
@@ -87,7 +89,7 @@ tags: [asterisk, pjsip]
 
 В данном случае у нас есть внутренний номер **100**, который настроен на набор номера в течение 30 секунд, а затем переход на голосовую почту для этого внутреннего номера, если на звонок не отвечают. Для основной старой версии Asterisk диалплан этого номера может выглядеть очень похоже на приведенный ниже код:
 
-![](/_resource/using-pjsip-dial-contacts-in-asterisk-1.jpg)
+![Набор номера по-старому](/_resource/using-pjsip-dial-contacts-in-asterisk-1.jpg)
 
 Обратите внимание на выделенную команду `Dial()`, которая обрабатывает звонок на телефон, подключенный к внутреннему номеру, так как это единственная часть диалплана, которую необходимо изменить!
 
