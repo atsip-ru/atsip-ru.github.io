@@ -1,6 +1,6 @@
 ---
 title: 'Выбор правильной роли устройства Meshtastic'
-date: 2025-02-05T13:09:52+05:00
+date: 2026-02-05T13:09:52+05:00
 draft: false
 author: 'Dmitriy Q'
 tags: [meshtastic, role, translate]
