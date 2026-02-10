@@ -1,6 +1,6 @@
 ---
 title: 'Задерживает ли LongFast ваш Mesh? Лучшие LoRa-настройки для больших Meshtastic сетей'
-date: 2026-02-05T13:09:52+05:00
+date: 2026-02-10T09:30:52+05:00
 draft: false
 author: 'Dmitriy Q'
 tags: [meshtastic, translate]
