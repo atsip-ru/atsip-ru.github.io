@@ -1,7 +1,7 @@
 ---
 title: 'Разблокировка функции Store & Forward в Meshtastic: полное руководство'
 date: 2026-03-20T15:38:00+05:00
-draft: true
+draft: false
 author: 'Dmitriy Q'
 tags: [meshtastic, translate]
 ---
