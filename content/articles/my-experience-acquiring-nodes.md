@@ -1,7 +1,7 @@
 ---
 title: 'Мой опыт приобретения нод'
 date: '2026-05-12T13:01:17+05:00'
-draft = false
+draft: false
 author: 'Dmitriy Q'
 tags: [meshtastic, heltec]
 ---
