@@ -1,7 +1,7 @@
 ---
 title: 'Руководство пользователя NanoVNA-H'
 date: '2026-05-13T11:46:23+05:00'
-draft: false
+draft: true
 author: 'Dmitriy Q'
 tags: [nanovna, meshtastic]
 ---
@@ -74,3 +74,159 @@ Mark 1: Активирован
 **Мы проведем тестирование перед отправкой и подключимся напрямую к порту SMA для калибровки, данные калибровки будут сохранены в состоянии 0, и при загрузке
 будут загружены данные из состояния 0 напрямую.**
 
+## Калибровка и нормализация
+
+VNA Master - это портативное устройство, работающее в суровых полевых испытательных условиях. Для обеспечения точности измерений перед выполнением измерений в полевых условиях необходимо выполнить радиочастотную калибровку (OSLT). Для калибровки с помощью указанной механической калибровки требуются три нагрузки: разомкнутую (OPEN), короткозамкнутую (SHORT) и согласованную (LOAD). Данные калибровки сохраняются как данные пользовательской калибровки. Они могут быть сохранены в состоянии 0 и будут автоматически загружены при следующей загрузке, а также могут быть сохранены в состояниях 1-4 и могут быть загружены через меню RECALL.
+
+![Калибровка и нормализация](/_resources/nanovna-4.png)
+
+Нажмите меню CALIBRATE→CALIBRATE, чтобы открыть интерфейс калибровки, затем подключите разомкнутую, короткозамкнутую и согласованную нагрузку каждую последовательно, дождитесь стабилизации экрана и нажмите на пункт меню, соответствующий калибровке CH 0. К аппарату прилагается калибровочный элемент, для калибровки общедоступных деталей головки внутри медной иглы имеется короткое замыкание, внутренняя часть с иглой из белого пластика и корпусом из нержавеющей стали подключена к нагрузке (LOAD) 50 Ом, внутренняя часть пуста для открытого состояния. Для калибратора на задней панели используется короткое замыкание припоем, пайка двух резисторов по 100 Ом для нагрузки 50 Ом и разомкнутая цепь для разомкнутой нагрузки.
+
+К аппарату прилагается калибровочный элемент, для калибровки общедоступных деталей головки внутри медной иглы произошло короткое замыкание, внутренняя часть с иглой из белого пластика и корпусом из нержавеющей стали подключена к нагрузке (НАГРУЗКА) 50 Ом, внутренняя часть пуста для открытого состояния. Для головного калибратора на задней панели используется короткое замыкание припоем для короткого замыкания, сварка двух резисторов по 100 Ом для нагрузки 50 Ом, разомкнутая цепь для разомкнутости.
+
+Калибровка изоляции CH 1 требует подключения двух нагрузок к CH0 и CH1 соответственно, чтобы получить лучшую изоляцию, обычно используется только один комплект калибровочных нагрузок для порта 0, а нагрузку калибратора подключают к CH1, CH0 остается открытым, затем нажимают меню ISOLN для калибровки.
+
+Подключите CH0 и CH1 анализатора с помощью опционального прямого адаптера (набор SMA-SMA или кабель), затем нажмите меню THRU для калибровки. Операция нормализации перемещает измерительную эталонную плоскость на оба конца прямого адаптера. Эта функция доступна только при измерении параметра S21.
+
+После завершения калибровки нажмите кнопку Done, выйдите на экран Save, чтобы выбрать нужный статус (слот) для сохранения. После завершения калибровки три калибратора снова могут быть подключены к порту 0, и правильная калибровка должна основываться на карте SMITH, которая должна быть следующей: при подключении к OPEN кривые должны быть сосредоточены на самом правом краю карты SMITH, а при подключении SHORT кривые должны быть сосредоточены на самом левом краю карты SMITH, при подключении LOAD все кривые должны быть сосредоточены в центре карты SMITH. Используя RF-кабели для соединения портов CH0 и CH1, ошибки кривой S21 не должны превышать 0,1 дБ. Если будут обнаружены аномалии в данных калибровки, их следует перекалибровать.
+
+**Примечание: Если уже есть сохраненные данные калибровки, сначала нажмите «Reset» для очистки данных калибровки, а затем выполните калибровку!**
+
+Если калибровка была применена, отображается статус CAL.
+
+Он скрыт в состоянии, когда не был применен. C* — это состояние, в котором применяется несохраненное калибровочное значение (оно исчезает при отключении питания). C0 ~ C4 0 до 4 указывает на то, что сохранённое калибровочное значение было применено к одному из мест сохранения.
+SAVE Unsaved
+Состояние изменяется на это при сохранении операцией. Каждый из символов, показанных ниже C, указывает на то, что применяются следующие ошибки:
+D: Направленность, R: Отслеживание отражения, S: Совпадение источника, T: Отслеживание передачи, X: Изоляция
+
+### Select the display trace and display format
+
+The DISPLAY→TRACE item of the menu can choose to turn the corresponding display curve on or off, showing that the curve color is consistent with the color of the interface curve, and the display curve of the final operation is the active tracking curve, when the menu FORMAT, the SCALE,CHANNEL operation is valid for the display curve.
+
+The display type can be modified by the DISPLAY→FORMAT of the menu, DISPLAY→SCALE can adjust the scale, DISPLAY→CHANNEL can select the measured port.
+#### Setting the frequency range
+
+The frequency range of a channel can be expressed by three groups of parameters: Start Frequency, Center Frequency and Stop Frequency. If any of the parameters change, the others will be adjusted automatically in order to ensure the coupling relationship among them
+fcenter =(fstart +fstop )/2
+fspan= fstop- fstart
+Where fspan is the span.
+Set the center frequency point of the current screen through the STIMULUS→CENTER of the menu, and display the values of the center frequency and sweep span, respectively, to the left and right of the bottom of the grid. **In the lower-right corner of the pop-up Settings value screen, click to eject the soft keyboard and enter the frequency value via the soft keyboard.**
+
+Please pay attention to the following points:
+
+The start and stop frequencies will vary with changes to the center frequency when the span is constant.
+
+In Zero Span, the start frequency, stop frequency and center frequency are always set to the same value. Now, you can use port 0 as a signal source for a fixed output amplitude, but it is important to note that this machine uses the clock signal generator S5351 as the signal source, the output signal is square wave, contains a larger odd harmonic.
+
+Set the frequency range through the STIMULUS→SPAN of the menu, display the center frequency and sweep span values on the left and right sides of the grid, and click on the lower right corner of the pop-up settings value screen to eject the soft keyboard and enter the frequency values through the soft keyboard.
+
+Please pay attention to the following points:
+The start and stop frequency vary with the span when the center frequency is constant.
+
+When the span is set to the maximum, the analyzer enters full span mode.
+In Zero Span, the start frequency, stop frequency and center frequency are always set to the same value.
+
+Set the start frequency through the STIMULUS→START of the menu and display the start frequency and stop frequency values on the left and right sides of the grid, respectively. Click on the bottom right corner of the pop-up settings screen to eject the soft keyboard and enter the frequency value through the soft keyboard.
+
+Please pay attention to the following points:
+The span and center frequency vary with the start frequency when the Span does not reach the minimum (The parameters vary with the span, please refer to “Span”);
+In Zero Span, the start frequency, stop frequency and center frequency are always the same value.
+
+Set the stop frequency through the STIMULUS→STOP of the menu, and display the start frequency and stop frequency values on the left and right sides of the grid, respectively, in the lower right corner of the pop-up Settings screen, click to eject the soft keyboard and enter the frequency value through the soft keyboard.
+Please pay attention to the following points:
+The span and center frequency vary with the stop frequency. The change of the span will affect other system parameters. For more details, please refer to “Span”.
+
+In Zero Span, the start frequency, stop frequency and center frequency are always
+the same value.
+
+### Menu items
+
+DISPLAY
+* TRACE
+	* 0
+	* 1
+	* 2
+	* 3
+* FORMAT
+	* LOGMAG
+	* PHASE
+	* DELAY (Not implemented, computer software provides Group delay functionality)
+	* SMITH
+	* SWR
+	* MORE
+		* POLAR
+		* LINEAR
+* SCALE
+	* SCALE/DIV
+	* REFERENCE POSITION
+	* ELECTRICAL DELAY
+* CHANNEL
+	* CH0 REFLECT
+	* CH1 THROUGH
+MARKER
+* SELECT
+	* 1
+	* 2
+	* 3
+	* 4
+* MARKER→START
+* MARKER→STOP
+* MARKER→CENTER
+* MARKER→SPAN (Not implemented,)
+STIMULUS
+* STAR
+* STOP
+* CENTER
+* SPAN
+* CW FREQ
+CAL
+* CALIBRATE
+	* OPEN
+	* SHORT
+	* LOAD
+	* ISOLN
+	* THRU
+	* DONE
+		* SAVE
+* RESET
+* CORRECTION
+RECALL/SAVE
+* 0 (Default)
+* 1
+* 2
+* 3
+* 4
+CLOSE
+
+#### Basic performance
+
+* PCB: 54mm x 85.5mm x 11mm (without connectors, switches)
+* Measurement frequency: 50KHz -900MHz
+* RF output: -13dbm (maximum -9dbm)
+* Measurement range: 70dB (50kHz-300MHz), 50dB (300M-600MHz), 40dB (600M-900MHz));
+* Port SWR: < 1.1
+* Display: 2.8 inch TFT (320 x240)
+* USB interface: USB type-C communication mode: CDC (serial)
+* Power: USB 5V 120mA, built-in 400mAh battery, maximum charging current 0.8A
+* Number of scanning points: 101 (fixed)
+* Display Tracking: 4, Marking: 4, Setting Save: 5
+* Frequency Tolerance:<2.5ppm
+* Frequency Stability:<0.5ppm
+### Packing list
+NanoVNA host (with 400mAh battery) x 1
+USB Type-C data cable x1
+30cm SMA male to male RG174 RF cable x2
+SMA male calibration kit (OPEN / SHORT /LOAD) x1
+SMA female to female connector x1
+
+![Basic performance](/_resources/nanovna-5.png)
+
+### Block diagram
+
+![Block diagram](/_resources/nanovna-6.png)
+
+### NanoVNA Sharp
+
+Это программное обеспечение для ПК предназначено для управления файлами NanoVNA и экспорта файлов Touchstone (snp).
+
+![NanoVNA Sharp](/_resources/nanovna-7.png)
